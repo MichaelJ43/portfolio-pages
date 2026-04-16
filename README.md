@@ -40,7 +40,7 @@ python3 -m http.server --directory dist
 
 ## Deploy
 
-Pushing to `main` runs [.github/workflows/deploy.yml](.github/workflows/deploy.yml): resolve base path, build `./dist`, publish to the `gh-pages` branch with [peaceiris/actions-gh-pages](https://github.com/peaceiris/actions-gh-pages).
+Pushing to `main` runs [.github/workflows/deploy.yml](.github/workflows/deploy.yml): install Crystal with [`crystal-lang/install-crystal`](https://github.com/crystal-lang/install-crystal) (version pinned in the workflow to a real [crystal-lang/crystal release](https://github.com/crystal-lang/crystal/releases) tag), compile `sitegen`, resolve base path, build `./dist`, then publish to the `gh-pages` branch with [peaceiris/actions-gh-pages](https://github.com/peaceiris/actions-gh-pages).
 
 Pull request previews and cleanup are in [.github/workflows/preview.yml](.github/workflows/preview.yml).
 
