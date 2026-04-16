@@ -16,7 +16,7 @@ This repo is a **personal portfolio** published on **GitHub Pages**. It gives a 
 
 ## How the site is built
 
-The published site is **static HTML and CSS**—no client-side framework.
+The published site is **static HTML and CSS**.
 
 | Piece | Role |
 |--------|------|
@@ -24,18 +24,16 @@ The published site is **static HTML and CSS**—no client-side framework.
 | **[`src/sitegen.cr`](src/sitegen.cr)** | Small **Crystal** program: reads the YAML, normalizes the Pages **base path** from `VITE_BASE_PATH`, renders **[`templates/index.ecr`](templates/index.ecr)** (ECR templates), writes `dist/index.html`, copies **[`public/`](public/)** (e.g. styles and `.nojekyll`) into `dist/`. |
 | **[`public/styles.css`](public/styles.css)** | Layout and light/dark-friendly styling. |
 
-There are **no Shard dependencies**; only the `crystal` compiler is required to build the generator. [`shard.yml`](shard.yml) still holds the project **name and semver** for metadata.
+Building the generator takes the **Crystal** compiler (stdlib only for this code). [`shard.yml`](shard.yml) holds the project **name and semver** for metadata.
 
 ## Deployment flow
-
-Publishing follows the same **ideas** as [echo-web](https://github.com/MichaelJ43/echo-web) (base path resolution, `gh-pages`, PR previews), implemented with Crystal instead of Node/Vite.
 
 1. **Push to `main`** triggers [.github/workflows/deploy.yml](.github/workflows/deploy.yml).
 2. **Install Crystal** with [`crystal-lang/install-crystal`](https://github.com/crystal-lang/install-crystal) (version pinned in the workflow to a real [Crystal release](https://github.com/crystal-lang/crystal/releases) tag).
 3. **Compile** the generator: `crystal build --release src/sitegen.cr -o bin/sitegen`.
-4. **Resolve the site root** with the same shell logic as echo-web: optional repo variable `SITE_BASE_PATH`, otherwise `/` for a `username.github.io` repo or `/<repo>/` for a project Pages site (this repo → `/portfolio-pages/`).
-5. **Run `./bin/sitegen`** with `VITE_BASE_PATH` set to that root so asset URLs in HTML match GitHub Pages.
-6. **Publish** the `dist/` folder to the **`gh-pages`** branch using [peaceiris/actions-gh-pages](https://github.com/peaceiris/actions-gh-pages) (`keep_files: true` so previews and other paths are not wiped blindly).
+4. **Resolve the site root** for GitHub Pages: optional repository variable `SITE_BASE_PATH`, otherwise `/` for a `username.github.io` repo or `/<repo>/` for a project site (this repo → `/portfolio-pages/`).
+5. **Run `./bin/sitegen`** with `VITE_BASE_PATH` set to that root so asset URLs in HTML match the deployed path.
+6. **Publish** the `dist/` folder to the **`gh-pages`** branch using [peaceiris/actions-gh-pages](https://github.com/peaceiris/actions-gh-pages) (`keep_files: true` merges with existing branch content, e.g. PR preview folders).
 
 **Pull requests:** [.github/workflows/preview.yml](.github/workflows/preview.yml) builds with base path `…/preview/pr-<N>/`, publishes under `preview/pr-<N>/` on `gh-pages`, comments the preview URL on the PR, and **removes** that folder when the PR is closed.
 
@@ -49,8 +47,6 @@ Publishing follows the same **ideas** as [echo-web](https://github.com/MichaelJ4
 |------------|-----|
 | **[Crystal](https://crystal-lang.org/install/)** (1.11 or newer; CI uses **1.19.1**) | Compiles `sitegen`. |
 | **Python 3** (stdlib only) | Optional but convenient: `http.server` to preview `dist/` in a browser. Any other static file server works. |
-
-You do **not** need **Node**, **npm**, or **`shards install`** for this repository.
 
 ### Commands
 
@@ -79,7 +75,7 @@ python3 -m http.server --directory dist
 | `CONTENT_FILE` | `./content/repos.yml` | YAML source for copy and repo list |
 | `DIST_DIR` | `./dist` | Output directory |
 | `PUBLIC_DIR` | `./public` | Static assets copied into `dist/` |
-| `VITE_BASE_PATH` | `/` | Root path for `href`/`src` in generated HTML (same name as echo-web workflows) |
+| `VITE_BASE_PATH` | `/` | Root path for `href`/`src` in generated HTML (CI sets this from the resolved site root) |
 
 ---
 
