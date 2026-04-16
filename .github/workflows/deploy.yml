@@ -1,0 +1,58 @@
+name: Deploy site
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: portfolio-pages-deploy
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: crystal-lang/install-crystal-action@v1
+        with:
+          crystal_version: 1.14.2
+
+      - name: Build site generator
+        run: |
+          mkdir -p bin
+          crystal build --release src/sitegen.cr -o bin/sitegen
+
+      - name: Resolve site base path
+        id: site
+        run: |
+          EXPLICIT="${{ vars.SITE_BASE_PATH }}"
+          REPO="${{ github.event.repository.name }}"
+          OWNER="${{ github.repository_owner }}"
+          if [ -n "$EXPLICIT" ]; then
+            ROOT="$EXPLICIT"
+            [ "${ROOT#/}" != "$ROOT" ] || ROOT="/$ROOT"
+            if [ "$ROOT" != "/" ] && [ "${ROOT%/}" = "$ROOT" ]; then
+              ROOT="${ROOT}/"
+            fi
+          elif [ "$REPO" = "${OWNER}.github.io" ]; then
+            ROOT="/"
+          else
+            ROOT="/$REPO/"
+          fi
+          echo "path=$ROOT" >> $GITHUB_OUTPUT
+
+      - name: Build static site
+        env:
+          VITE_BASE_PATH: ${{ steps.site.outputs.path }}
+        run: ./bin/sitegen
+
+      - name: Publish to gh-pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          keep_files: true

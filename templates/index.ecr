@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= HTML.escape @page_title %></title>
+  <link rel="stylesheet" href="<%= HTML.escape @base_path %>styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <h1><%= HTML.escape @page_title %></h1>
+    <p class="intro"><%= HTML.escape @intro %></p>
+    <% if !@links.empty? %>
+      <nav class="links" aria-label="Profiles">
+        <% @links.each do |link| %>
+          <a href="<%= HTML.escape link.url %>"><%= HTML.escape link.label %></a>
+        <% end %>
+      </nav>
+    <% end %>
+  </header>
+
+  <main>
+    <h2 class="section-title">Selected work</h2>
+    <ul class="repo-list">
+      <% @repos.each do |repo| %>
+        <li class="repo-card">
+          <h3><a href="<%= HTML.escape repo.url %>"><%= HTML.escape repo.title %></a></h3>
+          <p class="repo-meta">
+            <span class="repo-name"><%= HTML.escape repo.repo %></span>
+            <% if lang = repo.language %>
+              <span class="lang"><%= HTML.escape lang %></span>
+            <% end %>
+          </p>
+          <p class="summary"><%= HTML.escape repo.summary %></p>
+        </li>
+      <% end %>
+    </ul>
+  </main>
+
+  <footer class="site-footer">
+    <p>Built with <a href="https://crystal-lang.org/">Crystal</a>. Source for this site lives alongside the generator in the same repository.</p>
+  </footer>
+</body>
+</html>

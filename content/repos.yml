@@ -1,0 +1,85 @@
+site:
+  title: Michael — software portfolio
+  intro: >-
+    I build cross-platform tools, web surfaces, and automation with a bias toward
+    clear UX and reliable delivery. Below are public repositories that show how I
+    ship, document, and integrate CI and GitHub Pages.
+  links:
+    - label: GitHub profile
+      url: https://github.com/MichaelJ43
+
+repos:
+  - slug: echo
+    title: Echo
+    repo: MichaelJ43/echo
+    url: https://github.com/MichaelJ43/echo
+    language: TypeScript
+    summary: >-
+      Cross-platform desktop app for exploring HTTP APIs—collections, environments,
+      auth, and responses—built with Tauri (Rust plus a web UI) as a lightweight
+      alternative to heavier clients. Demonstrates product thinking, native packaging,
+      and maintaining a polished UX for a developer tool.
+
+  - slug: echo-web
+    title: echo-web
+    repo: MichaelJ43/echo-web
+    url: https://github.com/MichaelJ43/echo-web
+    language: HTML
+    summary: >-
+      Marketing and documentation site for Echo, published to GitHub Pages with
+      automated production deploys and pull-request previews. Shows static-site
+      workflow design, base-path handling for project Pages, and contributor-facing
+      docs for preview URLs and configuration.
+
+  - slug: local-ai-worker
+    title: local-ai-worker
+    repo: MichaelJ43/local-ai-worker
+    url: https://github.com/MichaelJ43/local-ai-worker
+    language: Rust
+    summary: >-
+      Rust-based worker oriented around local or self-hosted AI workflows. Highlights
+      systems programming, performance-sensitive design, and responsible integration
+      patterns for model or inference backends without tying the portfolio site to a
+      single vendor stack.
+
+  - slug: adaptive-pipe
+    title: adaptive-pipe
+    repo: MichaelJ43/adaptive-pipe
+    url: https://github.com/MichaelJ43/adaptive-pipe
+    language: Go
+    summary: >-
+      Go project exploring adaptive streaming or piping between components—useful for
+      composable CLI and service boundaries. Demonstrates comfort with Go idioms,
+      concurrency primitives, and building small focused libraries or tools.
+
+  - slug: spiffy-trader
+    title: spiffy-trader
+    repo: MichaelJ43/spiffy-trader
+    url: https://github.com/MichaelJ43/spiffy-trader
+    language: TypeScript
+    summary: >-
+      Automated Kalshi trading simulator combining language models with RSS-driven
+      context for exploratory autonomous trading strategies. Shows integration of
+      external APIs, structured experimentation, and TypeScript for orchestration and
+      evaluation rather than only front-end work.
+
+  - slug: youtube-vertical
+    title: youtube-vertical
+    repo: MichaelJ43/youtube-vertical
+    url: https://github.com/MichaelJ43/youtube-vertical
+    language: TypeScript
+    summary: >-
+      TypeScript project focused on vertical or format-specific YouTube workflows or
+      tooling. Illustrates working in the modern JS ecosystem—tooling, types, and
+      shipping a scoped utility or app around a concrete media or creator use case.
+
+  - slug: weather-alerter
+    title: WeatherAlerter
+    repo: MichaelJ43/WeatherAlerter
+    url: https://github.com/MichaelJ43/WeatherAlerter
+    language: Scala
+    summary: >-
+      Scala application that uses Gemini-oriented flows to watch for weather alerts
+      and post to an API when conditions warrant. Demonstrates JVM/Scala service
+      patterns, integration with hosted AI APIs, and turning operational alerting
+      into a small well-bounded service.

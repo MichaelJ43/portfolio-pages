@@ -1,0 +1,132 @@
+name: PR preview
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: preview-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  deploy-preview:
+    if: github.event.action != 'closed'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: crystal-lang/install-crystal-action@v1
+        with:
+          crystal_version: 1.14.2
+
+      - name: Build site generator
+        run: |
+          mkdir -p bin
+          crystal build --release src/sitegen.cr -o bin/sitegen
+
+      - name: Resolve site base path
+        id: site
+        run: |
+          EXPLICIT="${{ vars.SITE_BASE_PATH }}"
+          REPO="${{ github.event.repository.name }}"
+          OWNER="${{ github.repository_owner }}"
+          if [ -n "$EXPLICIT" ]; then
+            ROOT="$EXPLICIT"
+            [ "${ROOT#/}" != "$ROOT" ] || ROOT="/$ROOT"
+            if [ "$ROOT" != "/" ] && [ "${ROOT%/}" = "$ROOT" ]; then
+              ROOT="${ROOT}/"
+            fi
+          elif [ "$REPO" = "${OWNER}.github.io" ]; then
+            ROOT="/"
+          else
+            ROOT="/$REPO/"
+          fi
+          echo "root=$ROOT" >> $GITHUB_OUTPUT
+
+      - name: Set preview base path
+        id: base
+        run: |
+          PR=${{ github.event.pull_request.number }}
+          ROOT="${{ steps.site.outputs.root }}"
+          if [ "$ROOT" = "/" ]; then
+            echo "path=/preview/pr-${PR}/" >> $GITHUB_OUTPUT
+          else
+            echo "path=${ROOT%/}/preview/pr-${PR}/" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Build static site
+        env:
+          VITE_BASE_PATH: ${{ steps.base.outputs.path }}
+        run: ./bin/sitegen
+
+      - name: Publish preview to gh-pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          destination_dir: preview/pr-${{ github.event.pull_request.number }}
+          keep_files: true
+
+      - name: Compute preview URL
+        id: preview
+        env:
+          CUSTOM: ${{ vars.CUSTOM_PAGES_URL }}
+        run: |
+          OWNER="${{ github.repository_owner }}"
+          P="${{ steps.base.outputs.path }}"
+          if [ -n "${CUSTOM:-}" ]; then
+            ORIGIN="${CUSTOM%/}"
+            echo "url=${ORIGIN}${P}" >> $GITHUB_OUTPUT
+          else
+            echo "url=https://${OWNER}.github.io${P}" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Find preview comment
+        uses: peter-evans/find-comment@v3
+        id: fc
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          comment-author: "github-actions[bot]"
+          body-includes: " "
+
+      - name: Post or update preview comment
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          comment-id: ${{ steps.fc.outputs.comment-id }}
+          body: |
+            **Website preview:** ${{ steps.preview.outputs.url }}
+
+            Built from `${{ github.sha }}`.
+          edit-mode: replace
+
+  cleanup-preview:
+    if: github.event.action == 'closed'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Remove preview folder
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          PR=${{ github.event.pull_request.number }}
+          DIR="preview/pr-${PR}"
+          if [ ! -d "$DIR" ]; then
+            echo "No folder $DIR — nothing to do."
+            exit 0
+          fi
+          git rm -rf "$DIR"
+          if git diff --staged --quiet; then
+            echo "No staged changes."
+            exit 0
+          fi
+          git commit -m "chore: remove website preview for PR #${PR}"
+          git push

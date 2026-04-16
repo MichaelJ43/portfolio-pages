@@ -1,0 +1,13 @@
+name: portfolio-pages
+version: 0.1.0
+
+authors:
+  - Michael
+
+targets:
+  sitegen:
+    main: src/sitegen.cr
+
+crystal: ">= 1.11.0"
+
+license: MIT
