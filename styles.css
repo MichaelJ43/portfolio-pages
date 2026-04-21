@@ -112,6 +112,20 @@ main {
   text-decoration: underline;
 }
 
+.repo-link-row {
+  margin: 0 0 0.5rem;
+  font-size: 0.9rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.2rem 0.35rem;
+}
+
+.repo-link-row .link-sep {
+  color: var(--muted);
+  user-select: none;
+}
+
 .repo-meta {
   margin: 0 0 0.75rem;
   font-size: 0.875rem;
