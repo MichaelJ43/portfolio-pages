@@ -59,8 +59,6 @@ jobs:
           fi
 
       - name: Build static site
-        env:
-          VITE_BASE_PATH: ${{ steps.base.outputs.path }}
         run: ./bin/sitegen
 
       - name: Publish preview to gh-pages

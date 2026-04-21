@@ -34,13 +34,12 @@ struct SiteRoot
 end
 
 struct PageView
-  getter base_path : String
   getter page_title : String
   getter intro : String
   getter links : Array(LinkItem)
   getter repos : Array(RepoItem)
 
-  def initialize(@base_path : String, root : SiteRoot)
+  def initialize(root : SiteRoot)
     @page_title = root.site.title
     @intro = root.site.intro
     @links = root.site.links
@@ -52,14 +51,6 @@ end
 
 module Sitegen
   extend self
-
-  def normalize_base_path(raw : String?) : String
-    r = raw
-    if r.nil? || r.empty?
-      return "/"
-    end
-    r.ends_with?("/") ? r : "#{r}/"
-  end
 
   def load_root(path : String) : SiteRoot
     SiteRoot.from_yaml File.read(path)
@@ -75,10 +66,9 @@ module Sitegen
   end
 
   def run(content_file : String, dist_dir : String, public_dir : String)
-    base = normalize_base_path(ENV["VITE_BASE_PATH"]?)
     root = load_root(content_file)
     FileUtils.mkdir_p(dist_dir)
-    view = PageView.new(base, root)
+    view = PageView.new(root)
     File.write(File.join(dist_dir, "index.html"), view.to_s)
     copy_public(public_dir, dist_dir)
   end
