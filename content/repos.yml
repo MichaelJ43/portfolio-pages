@@ -6,80 +6,79 @@ site:
     ship, document, and integrate CI and GitHub Pages.
   links:
     - label: GitHub profile
-      url: https://github.com/MichaelJ43
+      url: https://github.com/michaelj43
 
 repos:
   - slug: echo
     title: Echo
-    repo: MichaelJ43/echo
-    url: https://github.com/MichaelJ43/echo
+    repo: michaelj43/echo
+    url: https://github.com/michaelj43/echo
     language: TypeScript
+    extra_links:
+      - label: echo-web (GitHub Pages)
+        url: https://michaelj43.github.io/echo-web/
     summary: >-
       Cross-platform desktop app for exploring HTTP APIs—collections, environments,
-      auth, and responses—built with Tauri (Rust plus a web UI) as a lightweight
-      alternative to heavier clients. Demonstrates product thinking, native packaging,
-      and maintaining a polished UX for a developer tool.
+      auth, and request/response views—built with Tauri. The echo-web project site
+      is the marketing and documentation surface published on GitHub Pages, with
+      automated deploys and PR previews for contributor-friendly iteration.
 
-  - slug: echo-web
-    title: echo-web
-    repo: MichaelJ43/echo-web
-    url: https://github.com/MichaelJ43/echo-web
-    language: HTML
+  - slug: card-game
+    title: card-game
+    repo: michaelj43/card-game
+    url: https://github.com/michaelj43/card-game
+    language: TypeScript
+    extra_links:
+      - label: Live app
+        url: https://cardgame.michaelj43.dev
     summary: >-
-      Marketing and documentation site for Echo, published to GitHub Pages with
-      automated production deploys and pull-request previews. Shows static-site
-      workflow design, base-path handling for project Pages, and contributor-facing
-      docs for preview URLs and configuration.
-
-  - slug: local-ai-worker
-    title: local-ai-worker
-    repo: MichaelJ43/local-ai-worker
-    url: https://github.com/MichaelJ43/local-ai-worker
-    language: Rust
-    summary: >-
-      Rust-based worker oriented around local or self-hosted AI workflows. Highlights
-      systems programming, performance-sensitive design, and responsible integration
-      patterns for model or inference backends without tying the portfolio site to a
-      single vendor stack.
-
-  - slug: adaptive-pipe
-    title: adaptive-pipe
-    repo: MichaelJ43/adaptive-pipe
-    url: https://github.com/MichaelJ43/adaptive-pipe
-    language: Go
-    summary: >-
-      Go project exploring adaptive streaming or piping between components—useful for
-      composable CLI and service boundaries. Demonstrates comfort with Go idioms,
-      concurrency primitives, and building small focused libraries or tools.
+      Browser card game: interactive play, a focused UI, and a path to iterate on
+      rules and balance in public. The live app runs on a custom domain so friends
+      and reviewers can try builds without cloning the repository.
 
   - slug: spiffy-trader
     title: spiffy-trader
-    repo: MichaelJ43/spiffy-trader
-    url: https://github.com/MichaelJ43/spiffy-trader
+    repo: michaelj43/spiffy-trader
+    url: https://github.com/michaelj43/spiffy-trader
     language: TypeScript
     summary: >-
-      Automated Kalshi trading simulator combining language models with RSS-driven
-      context for exploratory autonomous trading strategies. Shows integration of
-      external APIs, structured experimentation, and TypeScript for orchestration and
-      evaluation rather than only front-end work.
+      Kalshi trading experiments that combine model-assisted signals with
+      structured evaluation and clear boundaries between research and production
+      concerns. The repository tracks orchestration, API usage, and how results are
+      recorded so ideas stay reproducible and reviewable over time.
 
-  - slug: youtube-vertical
-    title: youtube-vertical
-    repo: MichaelJ43/youtube-vertical
-    url: https://github.com/MichaelJ43/youtube-vertical
+  - slug: iac-builder
+    title: iac-builder
+    repo: michaelj43/iac-builder
+    url: https://github.com/michaelj43/iac-builder
     language: TypeScript
+    extra_links:
+      - label: Live app
+        url: https://iacbuilder.michaelj43.dev
     summary: >-
-      TypeScript project focused on vertical or format-specific YouTube workflows or
-      tooling. Illustrates working in the modern JS ecosystem—tooling, types, and
-      shipping a scoped utility or app around a concrete media or creator use case.
+      Web app for composing or exploring infrastructure-as-code in a guided way,
+      with an emphasis on sensible defaults and fast feedback. A public instance is
+      on the custom domain below (still coming online); the repo remains the
+      source of truth for how it is built and deployed.
 
-  - slug: weather-alerter
-    title: WeatherAlerter
-    repo: MichaelJ43/WeatherAlerter
-    url: https://github.com/MichaelJ43/WeatherAlerter
-    language: Scala
+  - slug: local-ai-worker
+    title: local-ai-worker
+    repo: michaelj43/local-ai-worker
+    url: https://github.com/michaelj43/local-ai-worker
+    language: Rust
     summary: >-
-      Scala application that uses Gemini-oriented flows to watch for weather alerts
-      and post to an API when conditions warrant. Demonstrates JVM/Scala service
-      patterns, integration with hosted AI APIs, and turning operational alerting
-      into a small well-bounded service.
+      Rust worker for local or self-hosted AI workflows, oriented toward
+      performance and clear boundaries when talking to model runtimes. It shows
+      how I lean on the type system and async tooling in Rust to keep integration
+      code small and testable.
+
+  - slug: adaptive-pipe
+    title: adaptive-pipe
+    repo: michaelj43/adaptive-pipe
+    url: https://github.com/michaelj43/adaptive-pipe
+    language: Go
+    summary: >-
+      Go project for adaptive streaming or piping between components, useful for
+      composable CLI and service edges. The code favours small interfaces,
+      straightforward concurrency, and building blocks that are easy to reason
+      about in larger systems.
