@@ -24,7 +24,18 @@
     <ul class="repo-list">
       <% @repos.each do |repo| %>
         <li class="repo-card">
-          <h3><a href="<%= HTML.escape repo.url %>"><%= HTML.escape repo.title %></a></h3>
+          <% if repo.extra_links.empty? %>
+            <h3><a href="<%= HTML.escape repo.url %>"><%= HTML.escape repo.title %></a></h3>
+          <% else %>
+            <h3><%= HTML.escape repo.title %></h3>
+            <p class="repo-link-row" aria-label="Project links">
+              <a href="<%= HTML.escape repo.url %>">Repository</a>
+              <% repo.extra_links.each do |l| %>
+                <span class="link-sep" aria-hidden="true">·</span>
+                <a href="<%= HTML.escape l.url %>"><%= HTML.escape l.label %></a>
+              <% end %>
+            </p>
+          <% end %>
           <p class="repo-meta">
             <span class="repo-name"><%= HTML.escape repo.repo %></span>
             <% if lang = repo.language %>

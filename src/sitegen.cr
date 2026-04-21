@@ -24,6 +24,7 @@ struct RepoItem
   property url : String
   property language : String?
   property summary : String
+  property extra_links : Array(LinkItem) = [] of LinkItem
 end
 
 struct SiteRoot
