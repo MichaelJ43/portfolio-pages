@@ -25,39 +25,37 @@
   </header>
 
   <main class="m43-main">
-    <section class="platform-context" aria-labelledby="platform-context-title">
-      <details>
-        <summary id="platform-context-title">How these pages are wired</summary>
-        <div class="platform-context__body">
-          <p>
-            These portfolio pages are static HTML at the edge, but they share the same
-            small platform pieces I use across public projects. The skill chips on
-            each card call out where those patterns show up in the work.
-          </p>
-          <dl class="platform-context__grid">
-            <div>
-              <dt>Static assets</dt>
-              <dd>Shared tokens, shell styles, primitives, analytics, and auth-header scripts load from <code>static.michaelj43.dev</code>.</dd>
-            </div>
-            <div>
-              <dt>Shared API platform</dt>
-              <dd>Client-side integrations point at <code>api.michaelj43.dev</code> so pages can stay static while calling common services.</dd>
-            </div>
-            <div>
-              <dt>Auth process</dt>
-              <dd>The header script talks to <code>auth.michaelj43.dev</code> and renders sign-in state without each page owning auth UI.</dd>
-            </div>
-            <div>
-              <dt>Analytics</dt>
-              <dd>A lightweight shared script records page usage with an app id, keeping instrumentation consistent across projects.</dd>
-            </div>
-            <div>
-              <dt>Domain routing</dt>
-              <dd>Custom domains route live apps and portfolio pages to the right static build, preview path, or service origin.</dd>
-            </div>
-          </dl>
-        </div>
-      </details>
+    <section class="portfolio-section" aria-labelledby="strengths-title">
+      <div class="section-heading">
+        <h2 id="strengths-title" class="section-title m43-section-title">Technical strengths</h2>
+        <p>Quick signal for recruiters and hiring managers: the projects below are public examples of these skills in practice.</p>
+      </div>
+      <div class="strengths-grid">
+        <article>
+          <h3>Product and frontend</h3>
+          <p>TypeScript applications, focused UI, browser interaction, and cross-platform desktop surfaces with Tauri.</p>
+        </article>
+        <article>
+          <h3>APIs and integrations</h3>
+          <p>Auth flows, external APIs, analytics hooks, and shared client-side services that keep static pages useful.</p>
+        </article>
+        <article>
+          <h3>Delivery and web platform</h3>
+          <p>GitHub Pages, CI/CD, PR previews, static assets, custom domains, and deployable public demos.</p>
+        </article>
+        <article>
+          <h3>Systems and automation</h3>
+          <p>Rust async workers, Go concurrency, streaming pipelines, local AI tooling, and reproducible workflows.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="site-proof" aria-labelledby="site-proof-title">
+      <h2 id="site-proof-title">This portfolio also demonstrates</h2>
+      <p>
+        The page is generated with Crystal, published as static HTML, styled through shared assets from
+        <code>static.michaelj43.dev</code>, and wired into shared auth, analytics, API, and domain-routing pieces.
+      </p>
     </section>
 
     <h2 class="section-title m43-section-title">Selected work</h2>

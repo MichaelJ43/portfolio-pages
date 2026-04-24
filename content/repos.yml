@@ -1,9 +1,10 @@
 site:
   title: Michael — software portfolio
   intro: >-
-    I build cross-platform tools, web surfaces, and automation with a bias toward
-    clear UX and reliable delivery. Below are public repositories that show how I
-    ship, document, and integrate CI and GitHub Pages.
+    I build TypeScript product surfaces, cross-platform tools, automation, and
+    small platform pieces that make projects easier to ship and operate. This
+    page highlights the technical skills demonstrated across the projects and
+    the website itself.
   links:
     - label: GitHub profile
       url: https://github.com/michaelj43
@@ -18,7 +19,7 @@ repos:
       - Tauri desktop apps
       - API client UX
       - Auth workflows
-      - PR previews
+      - CI/CD and PR previews
     extra_links:
       - label: echo-web (GitHub Pages)
         url: https://michaelj43.github.io/echo-web/
@@ -35,9 +36,9 @@ repos:
     language: TypeScript
     skills:
       - Interactive UI
-      - Game state
-      - Custom domains
-      - Static hosting
+      - Browser game state
+      - Custom domain deployment
+      - Static app hosting
     extra_links:
       - label: Live app
         url: https://cardgame.michaelj43.dev
@@ -52,8 +53,8 @@ repos:
     url: https://github.com/michaelj43/spiffy-trader
     language: TypeScript
     skills:
-      - API integration
-      - Signal evaluation
+      - External API integration
+      - Model-assisted evaluation
       - Automation
       - Reproducible workflows
     summary: >-
@@ -70,8 +71,8 @@ repos:
     skills:
       - Infrastructure UX
       - Guided workflows
-      - Domain routing
-      - Shared API platform
+      - Custom domain routing
+      - Shared platform services
     extra_links:
       - label: Live app
         url: https://iacbuilder.michaelj43.dev
@@ -90,7 +91,7 @@ repos:
       - Rust async
       - Local AI runtimes
       - Service boundaries
-      - Performance
+      - Performance-minded tooling
     summary: >-
       Rust worker for local or self-hosted AI workflows, oriented toward
       performance and clear boundaries when talking to model runtimes. It shows
@@ -105,7 +106,7 @@ repos:
     skills:
       - Go concurrency
       - Streaming pipelines
-      - CLI building blocks
+      - CLI and service building blocks
       - Small interfaces
     summary: >-
       Go project for adaptive streaming or piping between components, useful for
