@@ -4,14 +4,19 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title><%= HTML.escape @page_title %></title>
+  <link rel="stylesheet" href="https://static.michaelj43.dev/v1/m43-tokens.css">
+  <link rel="stylesheet" href="https://static.michaelj43.dev/v1/m43-shell.css">
+  <link rel="stylesheet" href="https://static.michaelj43.dev/v1/m43-primitives.css">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-  <header class="site-header">
+<body class="m43 m43-page">
+  <div data-m43-auth-header></div>
+  <div class="m43-page__body m43">
+  <header class="site-header m43-site-header">
     <h1><%= HTML.escape @page_title %></h1>
-    <p class="intro"><%= HTML.escape @intro %></p>
+    <p class="intro m43-intro"><%= HTML.escape @intro %></p>
     <% if !@links.empty? %>
-      <nav class="links" aria-label="Profiles">
+      <nav class="links m43-nav" aria-label="Profiles">
         <% @links.each do |link| %>
           <a href="<%= HTML.escape link.url %>"><%= HTML.escape link.label %></a>
         <% end %>
@@ -19,8 +24,8 @@
     <% end %>
   </header>
 
-  <main>
-    <h2 class="section-title">Selected work</h2>
+  <main class="m43-main">
+    <h2 class="section-title m43-section-title">Selected work</h2>
     <ul class="repo-list">
       <% @repos.each do |repo| %>
         <li class="repo-card">
@@ -47,8 +52,24 @@
     </ul>
   </main>
 
-  <footer class="site-footer">
+  <footer class="site-footer m43-site-footer">
     <p>Built with <a href="https://crystal-lang.org/">Crystal</a>. Source for this site lives alongside the generator in the same repository.</p>
   </footer>
+  </div>
+
+  <script
+    src="https://static.michaelj43.dev/v1/m43-analytics.js"
+    defer
+    data-m43-app="portfolio-pages"
+    data-m43-api="https://api.michaelj43.dev"
+  ></script>
+  <script
+    src="https://static.michaelj43.dev/v1/m43-auth-header.js"
+    defer
+    data-m43-auth
+    data-m43-api="https://api.michaelj43.dev"
+    data-m43-auth-origin="https://auth.michaelj43.dev"
+    data-m43-home-url="https://michaelj43.dev/"
+  ></script>
 </body>
 </html>
