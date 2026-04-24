@@ -1,9 +1,10 @@
 site:
   title: Michael — software portfolio
   intro: >-
-    I build cross-platform tools, web surfaces, and automation with a bias toward
-    clear UX and reliable delivery. Below are public repositories that show how I
-    ship, document, and integrate CI and GitHub Pages.
+    I build TypeScript product surfaces, cross-platform tools, automation, and
+    small platform pieces that make projects easier to ship and operate. This
+    page highlights the technical skills demonstrated across the projects and
+    the website itself.
   links:
     - label: GitHub profile
       url: https://github.com/michaelj43
@@ -14,6 +15,11 @@ repos:
     repo: michaelj43/echo
     url: https://github.com/michaelj43/echo
     language: TypeScript
+    skills:
+      - Tauri desktop apps
+      - API client UX
+      - Auth workflows
+      - CI/CD and PR previews
     extra_links:
       - label: echo-web (GitHub Pages)
         url: https://michaelj43.github.io/echo-web/
@@ -28,6 +34,11 @@ repos:
     repo: michaelj43/card-game
     url: https://github.com/michaelj43/card-game
     language: TypeScript
+    skills:
+      - Interactive UI
+      - Browser game state
+      - Custom domain deployment
+      - Static app hosting
     extra_links:
       - label: Live app
         url: https://cardgame.michaelj43.dev
@@ -41,6 +52,11 @@ repos:
     repo: michaelj43/spiffy-trader
     url: https://github.com/michaelj43/spiffy-trader
     language: TypeScript
+    skills:
+      - External API integration
+      - Model-assisted evaluation
+      - Automation
+      - Reproducible workflows
     summary: >-
       Kalshi trading experiments that combine model-assisted signals with
       structured evaluation and clear boundaries between research and production
@@ -52,6 +68,11 @@ repos:
     repo: michaelj43/iac-builder
     url: https://github.com/michaelj43/iac-builder
     language: TypeScript
+    skills:
+      - Infrastructure UX
+      - Guided workflows
+      - Custom domain routing
+      - Shared platform services
     extra_links:
       - label: Live app
         url: https://iacbuilder.michaelj43.dev
@@ -66,6 +87,11 @@ repos:
     repo: michaelj43/local-ai-worker
     url: https://github.com/michaelj43/local-ai-worker
     language: Rust
+    skills:
+      - Rust async
+      - Local AI runtimes
+      - Service boundaries
+      - Performance-minded tooling
     summary: >-
       Rust worker for local or self-hosted AI workflows, oriented toward
       performance and clear boundaries when talking to model runtimes. It shows
@@ -77,6 +103,11 @@ repos:
     repo: michaelj43/adaptive-pipe
     url: https://github.com/michaelj43/adaptive-pipe
     language: Go
+    skills:
+      - Go concurrency
+      - Streaming pipelines
+      - CLI and service building blocks
+      - Small interfaces
     summary: >-
       Go project for adaptive streaming or piping between components, useful for
       composable CLI and service edges. The code favours small interfaces,

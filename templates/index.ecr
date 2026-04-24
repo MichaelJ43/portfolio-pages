@@ -25,6 +25,39 @@
   </header>
 
   <main class="m43-main">
+    <section class="portfolio-section" aria-labelledby="strengths-title">
+      <div class="section-heading">
+        <h2 id="strengths-title" class="section-title m43-section-title">Technical strengths</h2>
+        <p>Quick signal for recruiters and hiring managers: the projects below are public examples of these skills in practice.</p>
+      </div>
+      <div class="strengths-grid">
+        <article>
+          <h3>Product and frontend</h3>
+          <p>TypeScript applications, focused UI, browser interaction, and cross-platform desktop surfaces with Tauri.</p>
+        </article>
+        <article>
+          <h3>APIs and integrations</h3>
+          <p>Auth flows, external APIs, analytics hooks, and shared client-side services that keep static pages useful.</p>
+        </article>
+        <article>
+          <h3>Delivery and web platform</h3>
+          <p>GitHub Pages, CI/CD, PR previews, static assets, custom domains, and deployable public demos.</p>
+        </article>
+        <article>
+          <h3>Systems and automation</h3>
+          <p>Rust async workers, Go concurrency, streaming pipelines, local AI tooling, and reproducible workflows.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="site-proof" aria-labelledby="site-proof-title">
+      <h2 id="site-proof-title">This portfolio also demonstrates</h2>
+      <p>
+        The page is generated with Crystal, published as static HTML, styled through shared assets from
+        <code>static.michaelj43.dev</code>, and wired into shared auth, analytics, API, and domain-routing pieces.
+      </p>
+    </section>
+
     <h2 class="section-title m43-section-title">Selected work</h2>
     <ul class="repo-list">
       <% @repos.each do |repo| %>
@@ -46,6 +79,13 @@
               <span class="lang"><%= HTML.escape lang %></span>
             <% end %>
           </p>
+          <% if !repo.skills.empty? %>
+            <ul class="skill-list" aria-label="Relevant skills for <%= HTML.escape repo.title %>">
+              <% repo.skills.each do |skill| %>
+                <li><%= HTML.escape skill %></li>
+              <% end %>
+            </ul>
+          <% end %>
           <p class="summary"><%= HTML.escape repo.summary %></p>
         </li>
       <% end %>
