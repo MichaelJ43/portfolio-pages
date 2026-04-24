@@ -1,52 +1,10 @@
-:root {
-  color-scheme: light dark;
-  --bg: #0f1218;
-  --surface: #171c26;
-  --text: #e8ecf4;
-  --muted: #9aa3b5;
-  --accent: #6ea8fe;
-  --border: #2a3140;
-  --card: #1b2230;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    --bg: #f6f7fb;
-    --surface: #ffffff;
-    --text: #1a1f2b;
-    --muted: #5c6578;
-    --accent: #1a56c9;
-    --border: #d9dee8;
-    --card: #ffffff;
-  }
-}
-
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  line-height: 1.55;
-  background: var(--bg);
-  color: var(--text);
-}
-
-a {
-  color: var(--accent);
-  text-decoration-thickness: 0.08em;
-}
-
-a:hover {
-  text-decoration: underline;
-}
+/* App layout and components; global tokens and .m43 base come from m43-tokens.css (loaded first). */
 
 .site-header {
-  max-width: 52rem;
+  max-width: var(--m43-content-max);
   margin: 0 auto;
   padding: 2.5rem 1.25rem 1rem;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--m43-border);
 }
 
 .site-header h1 {
@@ -57,7 +15,7 @@ a:hover {
 
 .intro {
   margin: 0 0 1rem;
-  color: var(--muted);
+  color: var(--m43-muted);
   max-width: 48rem;
 }
 
@@ -67,8 +25,8 @@ a:hover {
   gap: 0.75rem 1.25rem;
 }
 
-main {
-  max-width: 52rem;
+.m43-main {
+  max-width: var(--m43-content-max);
   margin: 0 auto;
   padding: 2rem 1.25rem 3rem;
 }
@@ -77,7 +35,7 @@ main {
   margin: 0 0 1.25rem;
   font-size: 1.125rem;
   font-weight: 600;
-  color: var(--muted);
+  color: var(--m43-muted);
   text-transform: uppercase;
   letter-spacing: 0.06em;
 }
@@ -90,10 +48,11 @@ main {
   gap: 1.25rem;
 }
 
+/* m43-card omitted: repo-card grid + padding already match product layout; shell card styles could double borders. */
 .repo-card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 0.75rem;
+  background: var(--m43-elevated);
+  border: 1px solid var(--m43-border);
+  border-radius: var(--m43-radius-lg);
   padding: 1.25rem 1.35rem;
 }
 
@@ -108,7 +67,7 @@ main {
 }
 
 .repo-card h3 a:hover {
-  color: var(--accent);
+  color: var(--m43-accent);
   text-decoration: underline;
 }
 
@@ -122,42 +81,42 @@ main {
 }
 
 .repo-link-row .link-sep {
-  color: var(--muted);
+  color: var(--m43-muted);
   user-select: none;
 }
 
 .repo-meta {
   margin: 0 0 0.75rem;
   font-size: 0.875rem;
-  color: var(--muted);
+  color: var(--m43-muted);
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem 1rem;
 }
 
 .repo-name {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-family: var(--m43-font-mono);
 }
 
 .lang {
   padding: 0.1rem 0.45rem;
-  border-radius: 0.35rem;
-  background: var(--surface);
-  border: 1px solid var(--border);
+  border-radius: var(--m43-radius-sm);
+  background: var(--m43-surface);
+  border: 1px solid var(--m43-border);
 }
 
 .summary {
   margin: 0;
-  color: var(--text);
+  color: var(--m43-text);
 }
 
 .site-footer {
-  max-width: 52rem;
+  max-width: var(--m43-content-max);
   margin: 0 auto;
   padding: 2rem 1.25rem 3rem;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--m43-border);
   font-size: 0.875rem;
-  color: var(--muted);
+  color: var(--m43-muted);
 }
 
 .site-footer p {
