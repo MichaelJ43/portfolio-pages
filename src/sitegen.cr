@@ -23,6 +23,7 @@ struct RepoItem
   property repo : String
   property url : String
   property language : String?
+  property skills : Array(String) = [] of String
   property summary : String
   property extra_links : Array(LinkItem) = [] of LinkItem
 end

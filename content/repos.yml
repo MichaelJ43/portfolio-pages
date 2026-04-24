@@ -14,6 +14,11 @@ repos:
     repo: michaelj43/echo
     url: https://github.com/michaelj43/echo
     language: TypeScript
+    skills:
+      - Tauri desktop apps
+      - API client UX
+      - Auth workflows
+      - PR previews
     extra_links:
       - label: echo-web (GitHub Pages)
         url: https://michaelj43.github.io/echo-web/
@@ -28,6 +33,11 @@ repos:
     repo: michaelj43/card-game
     url: https://github.com/michaelj43/card-game
     language: TypeScript
+    skills:
+      - Interactive UI
+      - Game state
+      - Custom domains
+      - Static hosting
     extra_links:
       - label: Live app
         url: https://cardgame.michaelj43.dev
@@ -41,6 +51,11 @@ repos:
     repo: michaelj43/spiffy-trader
     url: https://github.com/michaelj43/spiffy-trader
     language: TypeScript
+    skills:
+      - API integration
+      - Signal evaluation
+      - Automation
+      - Reproducible workflows
     summary: >-
       Kalshi trading experiments that combine model-assisted signals with
       structured evaluation and clear boundaries between research and production
@@ -52,6 +67,11 @@ repos:
     repo: michaelj43/iac-builder
     url: https://github.com/michaelj43/iac-builder
     language: TypeScript
+    skills:
+      - Infrastructure UX
+      - Guided workflows
+      - Domain routing
+      - Shared API platform
     extra_links:
       - label: Live app
         url: https://iacbuilder.michaelj43.dev
@@ -66,6 +86,11 @@ repos:
     repo: michaelj43/local-ai-worker
     url: https://github.com/michaelj43/local-ai-worker
     language: Rust
+    skills:
+      - Rust async
+      - Local AI runtimes
+      - Service boundaries
+      - Performance
     summary: >-
       Rust worker for local or self-hosted AI workflows, oriented toward
       performance and clear boundaries when talking to model runtimes. It shows
@@ -77,6 +102,11 @@ repos:
     repo: michaelj43/adaptive-pipe
     url: https://github.com/michaelj43/adaptive-pipe
     language: Go
+    skills:
+      - Go concurrency
+      - Streaming pipelines
+      - CLI building blocks
+      - Small interfaces
     summary: >-
       Go project for adaptive streaming or piping between components, useful for
       composable CLI and service edges. The code favours small interfaces,
