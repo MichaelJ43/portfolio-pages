@@ -40,6 +40,71 @@
   letter-spacing: 0.06em;
 }
 
+.portfolio-section {
+  margin: 0 0 1.75rem;
+}
+
+.section-heading {
+  margin: 0 0 1rem;
+}
+
+.section-heading .section-title {
+  margin-bottom: 0.45rem;
+}
+
+.section-heading p {
+  margin: 0;
+  max-width: 48rem;
+  color: var(--m43-muted);
+}
+
+.strengths-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+}
+
+.strengths-grid article {
+  background: var(--m43-elevated);
+  border: 1px solid var(--m43-border);
+  border-radius: var(--m43-radius-lg);
+  padding: 1rem 1.1rem;
+}
+
+.strengths-grid h3 {
+  margin: 0 0 0.45rem;
+  font-size: 1rem;
+}
+
+.strengths-grid p {
+  margin: 0;
+  color: var(--m43-muted);
+  font-size: 0.94rem;
+}
+
+.site-proof {
+  margin: 0 0 2rem;
+  padding: 1rem 1.15rem;
+  border: 1px solid var(--m43-border);
+  border-radius: var(--m43-radius-lg);
+  background: var(--m43-surface);
+}
+
+.site-proof h2 {
+  margin: 0 0 0.45rem;
+  font-size: 1rem;
+}
+
+.site-proof p {
+  margin: 0;
+  color: var(--m43-muted);
+}
+
+.site-proof code {
+  font-family: var(--m43-font-mono);
+  font-size: 0.88em;
+}
+
 .repo-list {
   list-style: none;
   margin: 0;
@@ -103,6 +168,25 @@
   border-radius: var(--m43-radius-sm);
   background: var(--m43-surface);
   border: 1px solid var(--m43-border);
+}
+
+.skill-list {
+  list-style: none;
+  margin: 0 0 0.9rem;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.skill-list li {
+  padding: 0.2rem 0.55rem;
+  border: 1px solid var(--m43-border);
+  border-radius: 999px;
+  background: var(--m43-surface);
+  color: var(--m43-muted);
+  font-size: 0.82rem;
+  line-height: 1.4;
 }
 
 .summary {
