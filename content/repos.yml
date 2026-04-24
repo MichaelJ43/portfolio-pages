@@ -9,6 +9,126 @@ site:
     - label: GitHub profile
       url: https://github.com/michaelj43
 
+skills:
+  - title: Cloud and infrastructure
+    items:
+      - AWS
+      - Microsoft Azure
+      - Infrastructure as Code
+      - Multi-region deployment
+      - Virtual machines and containers
+      - CDN and static asset delivery
+  - title: DevOps and automation
+    items:
+      - CI/CD pipeline design
+      - Release management
+      - Automated test workflows
+      - Developer enablement
+      - Process automation
+      - Cross-team delivery
+  - title: Product and platform engineering
+    items:
+      - TypeScript applications
+      - Cross-platform desktop tools
+      - API integration
+      - Auth flows
+      - Shared UI systems
+      - Static site generation
+  - title: Systems and observability
+    items:
+      - Rust async tooling
+      - Go concurrency
+      - Streaming pipelines
+      - New Relic dashboards and alerts
+      - Slack alert integration
+      - Performance-minded services
+
+site_technical_aspects:
+  - title: Static generation
+    description: >-
+      A small Crystal generator reads YAML content, renders ECR templates, and
+      publishes static HTML that can run on GitHub Pages or a custom domain.
+  - title: Shared design assets
+    description: >-
+      The page consumes versioned tokens, shell styles, and primitives from
+      static.michaelj43.dev so multiple projects can share one visual system.
+  - title: Auth-aware shell
+    description: >-
+      The top bar is provided by a shared script that talks to the auth platform
+      for sign-in state while keeping this portfolio static.
+  - title: Analytics client
+    description: >-
+      A lightweight analytics script identifies this app and sends page events
+      to the shared API platform.
+  - title: Routing and delivery
+    description: >-
+      Public demos, preview builds, and portfolio pages use custom domains,
+      static hosting, and GitHub Actions-based deployment.
+
+navigation:
+  - title: Card Game
+    url: https://cardgame.michaelj43.dev
+    description: Browser card game with interactive TypeScript UI and custom-domain hosting.
+  - title: iac-builder
+    url: https://iacbuilder.michaelj43.dev
+    description: Guided infrastructure-as-code app focused on sensible defaults and fast feedback.
+  - title: Echo web page
+    url: https://michaelj43.github.io/echo-web/
+    description: Marketing and documentation surface for the Echo API client.
+  - title: Corporate Projects
+    url: https://michaelj43.dev/corporate-projects/
+    description: Public summary of enterprise DevOps, cloud, automation, and developer tooling work.
+  - title: GitHub profile
+    url: https://github.com/michaelj43
+    description: Source repositories and project history.
+  - title: Portfolio source
+    url: https://github.com/MichaelJ43/portfolio-pages
+    description: The generator, YAML content, and deployment workflow for this site.
+  - title: Analytics
+    url: https://analytics.michaelj43.dev
+    description: Shared analytics surface; listed last because it requires sign-in.
+    note: Behind auth
+
+corporate_projects:
+  - company: Capital One
+    role: Senior Software Engineer
+    period: Mar 2019 to Present
+    summary: >-
+      Enterprise developer enablement, CI/CD optimization, Infrastructure as
+      Code, and AI-assisted workflow automation across large engineering teams.
+    highlights:
+      - Built a multiplatform IDE plugin adopted by thousands of users, reducing manual testing overhead at scale.
+      - Improved enterprise CI/CD pipeline efficiency by more than 20% through standardized automation and workflow design.
+      - Modernized legacy database deployment with AWS Infrastructure as Code patterns.
+      - Integrated generative AI prompt engineering into developer workflows to accelerate delivery and improve satisfaction.
+      - Used data-driven technical leadership to align ambiguous engineering problems with practical delivery plans.
+    skills:
+      - AWS
+      - CI/CD
+      - Infrastructure as Code
+      - Developer tooling
+      - Generative AI integration
+      - Technical leadership
+  - company: Compare.com
+    role: DevOps Engineer
+    period: Jun 2015 to Mar 2019
+    summary: >-
+      Azure infrastructure, CI/CD automation, monitoring, release management, and
+      production support improvements across development, QA, and production environments.
+    highlights:
+      - Automated deployment pipelines with MSBuild, NPM, and automated test suites to reduce manual release steps.
+      - Provisioned Azure resources for virtual machines, containers, virtual networks, CDN, and Blob storage.
+      - Integrated New Relic alerts with Slack to improve incident response and operational visibility.
+      - Built New Relic dashboards for proactive monitoring of critical systems.
+      - Coordinated with distributed DevOps and production support teams to maintain consistent deployment standards.
+    skills:
+      - Microsoft Azure
+      - MSBuild
+      - NPM
+      - New Relic
+      - Slack integrations
+      - Release management
+
 repos:
   - slug: echo
     title: Echo
