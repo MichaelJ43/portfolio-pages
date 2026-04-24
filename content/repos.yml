@@ -76,7 +76,7 @@ navigation:
     url: https://michaelj43.github.io/echo-web/
     description: Marketing and documentation surface for the Echo API client.
   - title: Corporate Projects
-    url: ../corporate-projects/
+    url: https://michaelj43.dev/corporate-projects/
     description: Public summary of enterprise DevOps, cloud, automation, and developer tooling work.
   - title: GitHub profile
     url: https://github.com/michaelj43

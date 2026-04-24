@@ -1,6 +1,7 @@
 require "yaml"
 require "ecr"
 require "html"
+require "json"
 require "file_utils"
 
 struct LinkItem
@@ -142,11 +143,33 @@ module Sitegen
     File.write(path, html)
   end
 
+  def navigation_json(root : SiteRoot) : String
+    JSON.build do |json|
+      json.object do
+        json.field "items" do
+          json.array do
+            root.navigation.each do |item|
+              json.object do
+                json.field "title", item.title
+                json.field "url", item.url
+                json.field "description", item.description
+                if note = item.note
+                  json.field "note", note
+                end
+              end
+            end
+          end
+        end
+      end
+    end
+  end
+
   def run(content_file : String, dist_dir : String, public_dir : String)
     root = load_root(content_file)
     FileUtils.mkdir_p(dist_dir)
     write_page(dist_dir, "index.html", PageView.new(root).to_s)
     write_page(dist_dir, File.join("navigation", "index.html"), NavigationView.new(root).to_s)
+    write_page(dist_dir, "navigation.json", navigation_json(root))
     write_page(dist_dir, File.join("corporate-projects", "index.html"), CorporateProjectsView.new(root).to_s)
     copy_public(public_dir, dist_dir)
   end
