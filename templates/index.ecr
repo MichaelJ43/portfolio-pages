@@ -25,37 +25,38 @@
   </header>
 
   <main class="m43-main">
-    <section class="portfolio-section" aria-labelledby="strengths-title">
-      <div class="section-heading">
-        <h2 id="strengths-title" class="section-title m43-section-title">Technical strengths</h2>
-        <p>Quick signal for recruiters and hiring managers: the projects below are public examples of these skills in practice.</p>
-      </div>
-      <div class="strengths-grid">
-        <article>
-          <h3>Product and frontend</h3>
-          <p>TypeScript applications, focused UI, browser interaction, and cross-platform desktop surfaces with Tauri.</p>
-        </article>
-        <article>
-          <h3>APIs and integrations</h3>
-          <p>Auth flows, external APIs, analytics hooks, and shared client-side services that keep static pages useful.</p>
-        </article>
-        <article>
-          <h3>Delivery and web platform</h3>
-          <p>GitHub Pages, CI/CD, PR previews, static assets, custom domains, and deployable public demos.</p>
-        </article>
-        <article>
-          <h3>Systems and automation</h3>
-          <p>Rust async workers, Go concurrency, streaming pipelines, local AI tooling, and reproducible workflows.</p>
-        </article>
-      </div>
+    <section class="collapsible-section" aria-labelledby="site-tech-title">
+      <details>
+        <summary id="site-tech-title">How this website is built</summary>
+        <p class="details-intro">Technical aspects demonstrated by the portfolio site itself.</p>
+        <div class="info-grid">
+          <% @site_technical_aspects.each do |aspect| %>
+            <article>
+              <h3><%= HTML.escape aspect.title %></h3>
+              <p><%= HTML.escape aspect.description %></p>
+            </article>
+          <% end %>
+        </div>
+      </details>
     </section>
 
-    <section class="site-proof" aria-labelledby="site-proof-title">
-      <h2 id="site-proof-title">This portfolio also demonstrates</h2>
-      <p>
-        The page is generated with Crystal, published as static HTML, styled through shared assets from
-        <code>static.michaelj43.dev</code>, and wired into shared auth, analytics, API, and domain-routing pieces.
-      </p>
+    <section class="collapsible-section" aria-labelledby="skills-title">
+      <details>
+        <summary id="skills-title">Skills</summary>
+        <p class="details-intro">A YAML-driven skill index that can grow with the portfolio.</p>
+        <div class="info-grid">
+          <% @skills.each do |group| %>
+            <article>
+              <h3><%= HTML.escape group.title %></h3>
+              <ul class="inline-list">
+                <% group.items.each do |item| %>
+                  <li><%= HTML.escape item %></li>
+                <% end %>
+              </ul>
+            </article>
+          <% end %>
+        </div>
+      </details>
     </section>
 
     <h2 class="section-title m43-section-title">Selected work</h2>
@@ -110,6 +111,7 @@
     data-m43-api="https://api.michaelj43.dev"
     data-m43-auth-origin="https://auth.michaelj43.dev"
     data-m43-home-url="https://michaelj43.dev/"
+    data-m43-nav-url="https://michaelj43.dev/navigation/"
   ></script>
 </body>
 </html>

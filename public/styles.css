@@ -40,69 +40,123 @@
   letter-spacing: 0.06em;
 }
 
-.portfolio-section {
+.collapsible-section {
   margin: 0 0 1.75rem;
 }
 
-.section-heading {
-  margin: 0 0 1rem;
+.collapsible-section details {
+  background: var(--m43-elevated);
+  border: 1px solid var(--m43-border);
+  border-radius: var(--m43-radius-lg);
+  padding: 1rem 1.15rem;
 }
 
-.section-heading .section-title {
-  margin-bottom: 0.45rem;
+.collapsible-section summary {
+  cursor: pointer;
+  font-weight: 600;
 }
 
-.section-heading p {
-  margin: 0;
+.collapsible-section summary:hover {
+  color: var(--m43-accent);
+}
+
+.details-intro {
+  margin: 1rem 0;
   max-width: 48rem;
   color: var(--m43-muted);
 }
 
-.strengths-grid {
+.info-grid,
+.nav-card-grid {
   display: grid;
   gap: 1rem;
   grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
 }
 
-.strengths-grid article {
+.info-grid article,
+.nav-card,
+.corporate-card {
   background: var(--m43-elevated);
   border: 1px solid var(--m43-border);
   border-radius: var(--m43-radius-lg);
   padding: 1rem 1.1rem;
 }
 
-.strengths-grid h3 {
+.info-grid h3,
+.nav-card h3,
+.corporate-card h3 {
   margin: 0 0 0.45rem;
   font-size: 1rem;
 }
 
-.strengths-grid p {
+.info-grid p,
+.nav-card p {
   margin: 0;
   color: var(--m43-muted);
   font-size: 0.94rem;
 }
 
-.site-proof {
-  margin: 0 0 2rem;
-  padding: 1rem 1.15rem;
+.inline-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.inline-list li {
+  padding: 0.18rem 0.5rem;
   border: 1px solid var(--m43-border);
-  border-radius: var(--m43-radius-lg);
+  border-radius: 999px;
   background: var(--m43-surface);
+  color: var(--m43-muted);
+  font-size: 0.82rem;
 }
 
-.site-proof h2 {
-  margin: 0 0 0.45rem;
-  font-size: 1rem;
+.nav-card h3 a {
+  color: inherit;
+  text-decoration: none;
 }
 
-.site-proof p {
+.nav-card h3 a:hover {
+  color: var(--m43-accent);
+  text-decoration: underline;
+}
+
+.nav-card__note {
+  display: inline-block;
+  margin: 0 0 0.55rem !important;
+  padding: 0.1rem 0.45rem;
+  border: 1px solid var(--m43-border);
+  border-radius: 999px;
+  background: var(--m43-surface);
+  font-size: 0.78rem !important;
+}
+
+.corporate-list {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.corporate-card__heading {
+  margin: 0 0 0.75rem;
+}
+
+.corporate-card__heading p {
   margin: 0;
   color: var(--m43-muted);
+  font-size: 0.9rem;
 }
 
-.site-proof code {
-  font-family: var(--m43-font-mono);
-  font-size: 0.88em;
+.highlight-list {
+  margin: 0.9rem 0;
+  padding-left: 1.2rem;
+  color: var(--m43-text);
+}
+
+.highlight-list li + li {
+  margin-top: 0.45rem;
 }
 
 .repo-list {
