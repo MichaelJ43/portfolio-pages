@@ -14,7 +14,7 @@
   <div class="m43-page__body m43">
   <header class="site-header m43-site-header">
     <h1>Michael | Projects</h1>
-    <p class="intro m43-intro">I build TypeScript product surfaces, cross-platform tools, automation, and small platform pieces that make projects easier to ship and operate. This page highlights the technical skills demonstrated across the projects and the website itself.</p>
+    <p class="intro m43-intro">I design and build infrastructure-as-code and cloud-optimized platforms, with developer CI/CD and day-to-day engineering experience as the target: pipelines teams can rely on, fast feedback, and systems that are straightforward to ship and operate. This page highlights the technical skills demonstrated across the projects and the website itself.</p>
     
       <nav class="links m43-nav" aria-label="Profiles">
         
@@ -62,7 +62,7 @@
       </details>
     </section>
 
-    <section class="collapsible-section" aria-labelledby="skills-title">
+    <section class="collapsible-section skills-section" aria-labelledby="skills-title">
       <details>
         <summary id="skills-title">Skills</summary>
         <p class="details-intro">A YAML-driven skill index that can grow with the portfolio.</p>
@@ -70,78 +70,86 @@
           
             <article>
               <h3>Cloud and infrastructure</h3>
-              <ul class="inline-list">
-                
-                  <li>AWS</li>
-                
-                  <li>Microsoft Azure</li>
-                
-                  <li>Infrastructure as Code</li>
-                
-                  <li>Multi-region deployment</li>
-                
-                  <li>Virtual machines and containers</li>
-                
-                  <li>CDN and static asset delivery</li>
-                
-              </ul>
+              <div class="skills-pill-cluster">
+                <ul class="inline-list inline-list--skills">
+                  
+                    <li>AWS</li>
+                  
+                    <li>Microsoft Azure</li>
+                  
+                    <li>Infrastructure as Code</li>
+                  
+                    <li>Multi-region deployment</li>
+                  
+                    <li>Virtual machines and containers</li>
+                  
+                    <li>CDN and static asset delivery</li>
+                  
+                </ul>
+              </div>
             </article>
           
             <article>
               <h3>DevOps and automation</h3>
-              <ul class="inline-list">
-                
-                  <li>CI/CD pipeline design</li>
-                
-                  <li>Release management</li>
-                
-                  <li>Automated test workflows</li>
-                
-                  <li>Developer enablement</li>
-                
-                  <li>Process automation</li>
-                
-                  <li>Cross-team delivery</li>
-                
-              </ul>
+              <div class="skills-pill-cluster">
+                <ul class="inline-list inline-list--skills">
+                  
+                    <li>CI/CD pipeline design</li>
+                  
+                    <li>Release management</li>
+                  
+                    <li>Automated test workflows</li>
+                  
+                    <li>Developer enablement</li>
+                  
+                    <li>Process automation</li>
+                  
+                    <li>Cross-team delivery</li>
+                  
+                </ul>
+              </div>
             </article>
           
             <article>
               <h3>Product and platform engineering</h3>
-              <ul class="inline-list">
-                
-                  <li>TypeScript applications</li>
-                
-                  <li>Cross-platform desktop tools</li>
-                
-                  <li>API integration</li>
-                
-                  <li>Auth flows</li>
-                
-                  <li>Shared UI systems</li>
-                
-                  <li>Static site generation</li>
-                
-              </ul>
+              <div class="skills-pill-cluster">
+                <ul class="inline-list inline-list--skills">
+                  
+                    <li>TypeScript applications</li>
+                  
+                    <li>Cross-platform desktop tools</li>
+                  
+                    <li>API integration</li>
+                  
+                    <li>Auth flows</li>
+                  
+                    <li>Shared UI systems</li>
+                  
+                    <li>Static site generation</li>
+                  
+                </ul>
+              </div>
             </article>
           
             <article>
               <h3>Systems and observability</h3>
-              <ul class="inline-list">
-                
-                  <li>Rust async tooling</li>
-                
-                  <li>Go concurrency</li>
-                
-                  <li>Streaming pipelines</li>
-                
-                  <li>New Relic dashboards and alerts</li>
-                
-                  <li>Slack alert integration</li>
-                
-                  <li>Performance-minded services</li>
-                
-              </ul>
+              <div class="skills-pill-cluster">
+                <ul class="inline-list inline-list--skills">
+                  
+                    <li>Rust async tooling</li>
+                  
+                    <li>Go concurrency</li>
+                  
+                    <li>Streaming pipelines</li>
+                  
+                    <li>New Relic dashboards and alerts</li>
+                  
+                    <li>Slack alert integration</li>
+                  
+                    <li>Performance-minded services</li>
+                  
+                </ul>
+              </div>
             </article>
           
         </div>
@@ -165,6 +173,8 @@
             <span class="repo-name">michaelj43/echo</span>
             
               <span class="lang">TypeScript</span>
+            
+              <span class="lang">Rust</span>
             
           </p>
           
@@ -198,21 +208,25 @@
             
               <span class="lang">TypeScript</span>
             
+              <span class="lang">HCL</span>
+            
           </p>
           
             <ul class="skill-list" aria-label="Relevant skills for card-game">
               
-                <li>Interactive UI</li>
+                <li>React + TypeScript UI</li>
               
-                <li>Browser game state</li>
+                <li>Multiplayer REST + WebSocket APIs (AWS)</li>
               
-                <li>Custom domain deployment</li>
+                <li>WebRTC data channel + signaling</li>
               
-                <li>Static app hosting</li>
+                <li>DynamoDB + Lambda room services</li>
+              
+                <li>Terraform + custom domain hosting</li>
               
             </ul>
           
-          <p class="summary">Browser card game: interactive play, a focused UI, and a path to iterate on rules and balance in public. The live app runs on a custom domain so friends and reviewers can try builds without cloning the repository.</p>
+          <p class="summary">Browser card table with many YAML-driven games, AI seats, and online play. An AWS multiplayer stack handles rooms, JWT-gated signaling over WebSocket, and optional TURN scheduling; peers sync authoritative table state over WebRTC while Terraform defines the infrastructure. The live app is on a custom domain so friends and reviewers can try builds without cloning.</p>
         </li>
       
         <li class="repo-card">
@@ -253,23 +267,29 @@
           <p class="repo-meta">
             <span class="repo-name">michaelj43/iac-builder</span>
             
+              <span class="lang">Go</span>
+            
               <span class="lang">TypeScript</span>
             
           </p>
           
             <ul class="skill-list" aria-label="Relevant skills for iac-builder">
               
-                <li>Infrastructure UX</li>
+                <li>React + Vite wizard UI</li>
               
-                <li>Guided workflows</li>
+                <li>Optional OpenAI BYOK assist (auditable prompts)</li>
               
-                <li>Custom domain routing</li>
+                <li>Optional encrypted AWS profiles + VPC/subnet discovery</li>
               
-                <li>Shared platform services</li>
+                <li>Terraform-style generation + code preview drawer</li>
+              
+                <li>Go API with SQLite and preview pipeline</li>
+              
+                <li>Docker Compose; AWS serverless hosting (GitHub Actions)</li>
               
             </ul>
           
-          <p class="summary">Web app for composing or exploring infrastructure-as-code in a guided way, with an emphasis on sensible defaults and fast feedback. A public instance is on the custom domain below (still coming online); the repo remains the source of truth for how it is built and deployed.</p>
+          <p class="summary">Guided Infrastructure-as-Code generator: a React wizard fronts a Go API that produces previewable Terraform-style output in a code drawer, with sensible defaults, optional encrypted AWS credential profiles for discovery, and optional OpenAI BYOK suggestions under operator-controlled guardrails. Local runs use Docker Compose; production paths cover S3, CloudFront, and Lambda with documented Terraform and CI deploy/destroy workflows.</p>
         </li>
       
         <li class="repo-card">
