@@ -1,10 +1,11 @@
 site:
   title: Michael | Projects
   intro: >-
-    I build TypeScript product surfaces, cross-platform tools, automation, and
-    small platform pieces that make projects easier to ship and operate. This
-    page highlights the technical skills demonstrated across the projects and
-    the website itself.
+    I design and build infrastructure-as-code and cloud-optimized platforms,
+    with developer CI/CD and day-to-day engineering experience as the target:
+    pipelines teams can rely on, fast feedback, and systems that are
+    straightforward to ship and operate. This page highlights the technical
+    skills demonstrated across the projects and the website itself.
   links:
     - label: GitHub profile
       url: https://github.com/michaelj43
