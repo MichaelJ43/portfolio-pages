@@ -112,6 +112,7 @@
   background: var(--m43-surface);
   color: var(--m43-muted);
   font-size: 0.82rem;
+  text-align: center;
 }
 
 .nav-card h3 a {
