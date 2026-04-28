@@ -74,7 +74,9 @@ navigation:
       and Terraform-defined infrastructure; static app on a custom domain.
   - title: iac-builder
     url: https://iacbuilder.michaelj43.dev
-    description: Guided infrastructure-as-code app focused on sensible defaults and fast feedback.
+    description: >-
+      Guided IaC wizard (React + Go): live code preview, optional AWS discovery,
+      BYOK OpenAI assist, operator guardrails, Docker Compose, and AWS serverless deploy.
   - title: Echo web page
     url: https://michaelj43.github.io/echo-web/
     description: Marketing and documentation surface for the Echo API client.
@@ -202,18 +204,22 @@ repos:
       - Go
       - TypeScript
     skills:
-      - Infrastructure UX
-      - Guided workflows
-      - Custom domain routing
-      - Shared platform services
+      - React + Vite wizard UI
+      - Go API with SQLite and preview pipeline
+      - Terraform-oriented generation and code preview drawer
+      - Optional encrypted AWS profiles and VPC/subnet discovery
+      - Optional OpenAI BYOK assist (auditable prompts)
+      - Docker Compose; AWS serverless hosting with GitHub Actions
     extra_links:
       - label: Live app
         url: https://iacbuilder.michaelj43.dev
     summary: >-
-      Web app for composing or exploring infrastructure-as-code in a guided way,
-      with an emphasis on sensible defaults and fast feedback. A public instance is
-      on the custom domain below (still coming online); the repo remains the
-      source of truth for how it is built and deployed.
+      Guided Infrastructure-as-Code generator: a React wizard fronts a Go API
+      that produces previewable Terraform-style output in a code drawer, with
+      sensible defaults, optional encrypted AWS credential profiles for discovery,
+      and optional OpenAI BYOK suggestions under operator-controlled guardrails.
+      Local runs use Docker Compose; production paths cover S3, CloudFront, and
+      Lambda with documented Terraform and CI deploy/destroy workflows.
 
   - slug: local-ai-worker
     title: local-ai-worker
