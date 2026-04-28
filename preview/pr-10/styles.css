@@ -119,6 +119,8 @@
 
 .skills-section .inline-list--skills > li {
   flex: 0 0 auto;
+  text-align: center;
+  text-wrap: balance;
 }
 
 .inline-list li {
@@ -258,6 +260,7 @@
   color: var(--m43-muted);
   font-size: 0.82rem;
   line-height: 1.4;
+  text-align: left;
 }
 
 .summary {
