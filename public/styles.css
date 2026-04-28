@@ -224,15 +224,6 @@
   border: 1px solid var(--m43-border);
 }
 
-.lang--primary {
-  font-weight: 600;
-}
-
-.lang--mix {
-  font-size: 0.8125rem;
-  color: var(--m43-muted);
-}
-
 .skill-list {
   list-style: none;
   margin: 0 0 0.9rem;
