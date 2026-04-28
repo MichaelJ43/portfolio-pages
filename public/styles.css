@@ -123,6 +123,10 @@
   text-wrap: balance;
 }
 
+.skills-section .info-grid article > h3 {
+  text-align: center;
+}
+
 .inline-list li {
   padding: 0.18rem 0.5rem;
   border: 1px solid var(--m43-border);
