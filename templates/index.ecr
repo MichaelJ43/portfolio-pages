@@ -40,7 +40,7 @@
       </details>
     </section>
 
-    <section class="collapsible-section" aria-labelledby="skills-title">
+    <section class="collapsible-section skills-section" aria-labelledby="skills-title">
       <details>
         <summary id="skills-title">Skills</summary>
         <p class="details-intro">A YAML-driven skill index that can grow with the portfolio.</p>
@@ -48,11 +48,13 @@
           <% @skills.each do |group| %>
             <article>
               <h3><%= HTML.escape group.title %></h3>
-              <ul class="inline-list">
-                <% group.items.each do |item| %>
-                  <li><%= HTML.escape item %></li>
-                <% end %>
-              </ul>
+              <div class="skills-pill-cluster">
+                <ul class="inline-list inline-list--skills">
+                  <% group.items.each do |item| %>
+                    <li><%= HTML.escape item %></li>
+                  <% end %>
+                </ul>
+              </div>
             </article>
           <% end %>
         </div>
