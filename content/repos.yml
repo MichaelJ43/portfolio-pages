@@ -48,8 +48,8 @@ skills:
       - Identity and access management
       - Secrets management and rotation
       - Encryption at rest and in transit
-      - Secure CI/CD and supply chain hygiene
-      - Policy and guardrails in infrastructure
+      - CI/CD & supply chain security
+      - IaC policy & guardrails
       - Vulnerability management
 
 site_technical_aspects:
