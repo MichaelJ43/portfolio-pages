@@ -69,7 +69,9 @@ site_technical_aspects:
 navigation:
   - title: Card Game
     url: https://cardgame.michaelj43.dev
-    description: Browser card game with interactive TypeScript UI and custom-domain hosting.
+    description: >-
+      Browser card table with online play: AWS HTTP + WebSocket APIs, WebRTC table sync,
+      and Terraform-defined infrastructure; static app on a custom domain.
   - title: iac-builder
     url: https://iacbuilder.michaelj43.dev
     description: Guided infrastructure-as-code app focused on sensible defaults and fast feedback.
@@ -136,6 +138,9 @@ repos:
     repo: michaelj43/echo
     url: https://github.com/michaelj43/echo
     language: TypeScript
+    language_shares:
+      - name: Rust
+        pct: 13
     skills:
       - Tauri desktop apps
       - API client UX
@@ -155,18 +160,24 @@ repos:
     repo: michaelj43/card-game
     url: https://github.com/michaelj43/card-game
     language: TypeScript
+    language_shares:
+      - name: HCL
+        pct: 10
     skills:
-      - Interactive UI
-      - Browser game state
-      - Custom domain deployment
-      - Static app hosting
+      - React + TypeScript UI
+      - Multiplayer REST + WebSocket APIs (AWS)
+      - WebRTC data channel + signaling
+      - DynamoDB + Lambda room services
+      - Terraform + custom domain hosting
     extra_links:
       - label: Live app
         url: https://cardgame.michaelj43.dev
     summary: >-
-      Browser card game: interactive play, a focused UI, and a path to iterate on
-      rules and balance in public. The live app runs on a custom domain so friends
-      and reviewers can try builds without cloning the repository.
+      Browser card table with many YAML-driven games, AI seats, and online play.
+      An AWS multiplayer stack handles rooms, JWT-gated signaling over WebSocket,
+      and optional TURN scheduling; peers sync authoritative table state over
+      WebRTC while Terraform defines the infrastructure. The live app is on a
+      custom domain so friends and reviewers can try builds without cloning.
 
   - slug: spiffy-trader
     title: spiffy-trader
@@ -189,6 +200,9 @@ repos:
     repo: michaelj43/iac-builder
     url: https://github.com/michaelj43/iac-builder
     language: TypeScript
+    language_shares:
+      - name: Go
+        pct: 54
     skills:
       - Infrastructure UX
       - Guided workflows

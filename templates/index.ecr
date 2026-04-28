@@ -77,7 +77,10 @@
           <p class="repo-meta">
             <span class="repo-name"><%= HTML.escape repo.repo %></span>
             <% if lang = repo.language %>
-              <span class="lang"><%= HTML.escape lang %></span>
+              <span class="lang lang--primary"><%= HTML.escape lang %></span>
+            <% end %>
+            <% repo.language_shares.first(3).each do |share| %>
+              <span class="lang lang--mix"><%= HTML.escape share.name %> <%= share.pct %>%</span>
             <% end %>
           </p>
           <% if !repo.skills.empty? %>

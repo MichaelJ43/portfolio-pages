@@ -20,6 +20,12 @@ struct SiteMeta
   property links : Array(LinkItem) = [] of LinkItem
 end
 
+struct LanguageShare
+  include YAML::Serializable
+  property name : String
+  property pct : Int32
+end
+
 struct RepoItem
   include YAML::Serializable
   property slug : String
@@ -27,6 +33,7 @@ struct RepoItem
   property repo : String
   property url : String
   property language : String?
+  property language_shares : Array(LanguageShare) = [] of LanguageShare
   property skills : Array(String) = [] of String
   property summary : String
   property extra_links : Array(LinkItem) = [] of LinkItem
