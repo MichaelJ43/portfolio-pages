@@ -59,6 +59,8 @@ jobs:
           fi
 
       - name: Build static site
+        env:
+          CONTACT_EMAIL: ${{ secrets.CONTACT_EMAIL }}
         run: ./bin/sitegen
 
       - name: Publish preview to gh-pages

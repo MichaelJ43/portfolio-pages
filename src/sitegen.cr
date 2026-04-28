@@ -8,6 +8,9 @@ struct LinkItem
   include YAML::Serializable
   property label : String
   property url : String
+
+  def initialize(@label : String, @url : String)
+  end
 end
 
 struct SiteMeta
@@ -80,7 +83,7 @@ struct PageView
   def initialize(root : SiteRoot)
     @page_title = root.site.title
     @intro = root.site.intro
-    @links = root.site.links
+    @links = Sitegen.site_links_with_optional_contact(root.site.links)
     @skills = root.skills
     @site_technical_aspects = root.site_technical_aspects
     @repos = root.repos
@@ -98,7 +101,7 @@ struct NavigationView
   def initialize(root : SiteRoot)
     @page_title = "Navigation — Michael"
     @intro = "A quick index of public project pages, demos, and portfolio sections."
-    @links = root.site.links
+    @links = Sitegen.site_links_with_optional_contact(root.site.links)
     @navigation = root.navigation
   end
 
@@ -114,7 +117,7 @@ struct CorporateProjectsView
   def initialize(root : SiteRoot)
     @page_title = "Corporate Projects — Michael"
     @intro = "Public summaries of enterprise DevOps, cloud, automation, and developer tooling work."
-    @links = root.site.links
+    @links = Sitegen.site_links_with_optional_contact(root.site.links)
     @corporate_projects = root.corporate_projects
   end
 
@@ -123,6 +126,23 @@ end
 
 module Sitegen
   extend self
+
+  # Inserts a mailto link after the GitHub profile link when CONTACT_EMAIL is set
+  # (e.g. CI deploy). Keeps the address out of the repo; Cloudflare can obfuscate on the wire.
+  def site_links_with_optional_contact(site_links : Array(LinkItem)) : Array(LinkItem)
+    email = ENV["CONTACT_EMAIL"]?.try(&.strip)
+    return site_links.dup if email.nil? || email.empty?
+
+    out = site_links.dup
+    contact = LinkItem.new(label: "Get in touch", url: "mailto:#{email}")
+    idx = out.index { |l| l.url.includes?("github.com") }
+    if idx
+      out.insert(idx + 1, contact)
+    else
+      out << contact
+    end
+    out
+  end
 
   def load_root(path : String) : SiteRoot
     SiteRoot.from_yaml File.read(path)
