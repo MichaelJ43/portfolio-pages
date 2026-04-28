@@ -105,6 +105,24 @@
   gap: 0.4rem;
 }
 
+/* Skills category cards: center wrapped pill rows inside each card */
+.skills-section .skills-pill-cluster {
+  width: 100%;
+}
+
+.skills-section .inline-list--skills {
+  width: 100%;
+  max-width: 100%;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.skills-section .inline-list--skills > li {
+  flex: 0 0 auto;
+  text-align: center;
+  text-wrap: balance;
+}
+
 .inline-list li {
   padding: 0.18rem 0.5rem;
   border: 1px solid var(--m43-border);
@@ -231,6 +249,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.4rem;
+  justify-content: flex-start;
 }
 
 .skill-list li {
@@ -241,6 +260,7 @@
   color: var(--m43-muted);
   font-size: 0.82rem;
   line-height: 1.4;
+  text-align: left;
 }
 
 .summary {

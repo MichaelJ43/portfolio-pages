@@ -1,10 +1,11 @@
 site:
   title: Michael | Projects
   intro: >-
-    I build TypeScript product surfaces, cross-platform tools, automation, and
-    small platform pieces that make projects easier to ship and operate. This
-    page highlights the technical skills demonstrated across the projects and
-    the website itself.
+    I design and build infrastructure-as-code and cloud-optimized platforms,
+    with developer CI/CD and day-to-day engineering experience as the target:
+    pipelines teams can rely on, fast feedback, and systems that are
+    straightforward to ship and operate. This page highlights the technical
+    skills demonstrated across the projects and the website itself.
   links:
     - label: GitHub profile
       url: https://github.com/michaelj43
@@ -68,10 +69,14 @@ site_technical_aspects:
 navigation:
   - title: Card Game
     url: https://cardgame.michaelj43.dev
-    description: Browser card game with interactive TypeScript UI and custom-domain hosting.
+    description: >-
+      Browser card table with online play: AWS HTTP + WebSocket APIs, WebRTC table sync,
+      and Terraform-defined infrastructure; static app on a custom domain.
   - title: iac-builder
     url: https://iacbuilder.michaelj43.dev
-    description: Guided infrastructure-as-code app focused on sensible defaults and fast feedback.
+    description: >-
+      Guided IaC wizard (React + Go): live code preview, optional AWS discovery,
+      BYOK OpenAI assist, operator guardrails, Docker Compose, and AWS serverless deploy.
   - title: Echo web page
     url: https://michaelj43.github.io/echo-web/
     description: Marketing and documentation surface for the Echo API client.
@@ -134,7 +139,9 @@ repos:
     title: Echo
     repo: michaelj43/echo
     url: https://github.com/michaelj43/echo
-    language: TypeScript
+    languages:
+      - TypeScript
+      - Rust
     skills:
       - Tauri desktop apps
       - API client UX
@@ -153,25 +160,31 @@ repos:
     title: card-game
     repo: michaelj43/card-game
     url: https://github.com/michaelj43/card-game
-    language: TypeScript
+    languages:
+      - TypeScript
+      - HCL
     skills:
-      - Interactive UI
-      - Browser game state
-      - Custom domain deployment
-      - Static app hosting
+      - React + TypeScript UI
+      - Multiplayer REST + WebSocket APIs (AWS)
+      - WebRTC data channel + signaling
+      - DynamoDB + Lambda room services
+      - Terraform + custom domain hosting
     extra_links:
       - label: Live app
         url: https://cardgame.michaelj43.dev
     summary: >-
-      Browser card game: interactive play, a focused UI, and a path to iterate on
-      rules and balance in public. The live app runs on a custom domain so friends
-      and reviewers can try builds without cloning the repository.
+      Browser card table with many YAML-driven games, AI seats, and online play.
+      An AWS multiplayer stack handles rooms, JWT-gated signaling over WebSocket,
+      and optional TURN scheduling; peers sync authoritative table state over
+      WebRTC while Terraform defines the infrastructure. The live app is on a
+      custom domain so friends and reviewers can try builds without cloning.
 
   - slug: spiffy-trader
     title: spiffy-trader
     repo: michaelj43/spiffy-trader
     url: https://github.com/michaelj43/spiffy-trader
-    language: TypeScript
+    languages:
+      - TypeScript
     skills:
       - External API integration
       - Model-assisted evaluation
@@ -187,26 +200,33 @@ repos:
     title: iac-builder
     repo: michaelj43/iac-builder
     url: https://github.com/michaelj43/iac-builder
-    language: TypeScript
+    languages:
+      - Go
+      - TypeScript
     skills:
-      - Infrastructure UX
-      - Guided workflows
-      - Custom domain routing
-      - Shared platform services
+      - React + Vite wizard UI
+      - Optional OpenAI BYOK assist (auditable prompts)
+      - Optional encrypted AWS profiles + VPC/subnet discovery
+      - Terraform-style generation + code preview drawer
+      - Go API with SQLite and preview pipeline
+      - Docker Compose; AWS serverless hosting (GitHub Actions)
     extra_links:
       - label: Live app
         url: https://iacbuilder.michaelj43.dev
     summary: >-
-      Web app for composing or exploring infrastructure-as-code in a guided way,
-      with an emphasis on sensible defaults and fast feedback. A public instance is
-      on the custom domain below (still coming online); the repo remains the
-      source of truth for how it is built and deployed.
+      Guided Infrastructure-as-Code generator: a React wizard fronts a Go API
+      that produces previewable Terraform-style output in a code drawer, with
+      sensible defaults, optional encrypted AWS credential profiles for discovery,
+      and optional OpenAI BYOK suggestions under operator-controlled guardrails.
+      Local runs use Docker Compose; production paths cover S3, CloudFront, and
+      Lambda with documented Terraform and CI deploy/destroy workflows.
 
   - slug: local-ai-worker
     title: local-ai-worker
     repo: michaelj43/local-ai-worker
     url: https://github.com/michaelj43/local-ai-worker
-    language: Rust
+    languages:
+      - Rust
     skills:
       - Rust async
       - Local AI runtimes
@@ -222,7 +242,8 @@ repos:
     title: adaptive-pipe
     repo: michaelj43/adaptive-pipe
     url: https://github.com/michaelj43/adaptive-pipe
-    language: Go
+    languages:
+      - Go
     skills:
       - Go concurrency
       - Streaming pipelines

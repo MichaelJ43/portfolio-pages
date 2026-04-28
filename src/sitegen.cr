@@ -26,7 +26,8 @@ struct RepoItem
   property title : String
   property repo : String
   property url : String
-  property language : String?
+  # Languages in the repo, most-used first (four shown on the site).
+  property languages : Array(String) = [] of String
   property skills : Array(String) = [] of String
   property summary : String
   property extra_links : Array(LinkItem) = [] of LinkItem
