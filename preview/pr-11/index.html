@@ -205,13 +205,15 @@
               
                 <li>API client UX</li>
               
-                <li>Auth workflows</li>
+                <li>Auth workflows (Bearer, Basic, API key)</li>
+              
+                <li>OS credential store for secrets (not in exported workspace)</li>
               
                 <li>CI/CD and PR previews</li>
               
             </ul>
           
-          <p class="summary">Cross-platform desktop app for exploring HTTP APIs—collections, environments, auth, and request/response views—built with Tauri. The echo-web project site is the marketing and documentation surface published on GitHub Pages, with automated deploys and PR previews for contributor-friendly iteration.</p>
+          <p class="summary">Cross-platform desktop app for exploring HTTP APIs—collections, environments, auth, and request/response views—built with Tauri. Optional secrets use the OS credential store so exported workspaces stay free of sensitive values. The echo-web project site is the marketing and documentation surface on GitHub Pages, with automated deploys and PR previews for contributors.</p>
         </li>
       
         <li class="repo-card">
@@ -239,6 +241,8 @@
               
                 <li>Multiplayer REST + WebSocket APIs (AWS)</li>
               
+                <li>JWT-scoped room host/join and signaling</li>
+              
                 <li>WebRTC data channel + signaling</li>
               
                 <li>DynamoDB + Lambda room services</li>
@@ -247,7 +251,7 @@
               
             </ul>
           
-          <p class="summary">Browser card table with many YAML-driven games, AI seats, and online play. An AWS multiplayer stack handles rooms, JWT-gated signaling over WebSocket, and optional TURN scheduling; peers sync authoritative table state over WebRTC while Terraform defines the infrastructure. The live app is on a custom domain so friends and reviewers can try builds without cloning.</p>
+          <p class="summary">Browser card table with many YAML-driven games, AI seats, and online play. An AWS multiplayer stack handles rooms with short-lived JWTs for host and join flows, WebSocket signaling, and optional TURN; peers sync authoritative table state over WebRTC while Terraform defines the infrastructure. The app loads shared m43 auth for HTTPS-only identity flows on a custom domain.</p>
         </li>
       
         <li class="repo-card">
@@ -262,17 +266,21 @@
           
             <ul class="skill-list" aria-label="Relevant skills for spiffy-trader">
               
-                <li>External API integration</li>
+                <li>Kalshi read-only REST (and optional WS quotes)</li>
               
-                <li>Model-assisted evaluation</li>
+                <li>Simulated fills only — no live order API</li>
               
-                <li>Automation</li>
+                <li>RSS ingestion and local CouchDB state</li>
               
-                <li>Reproducible workflows</li>
+                <li>Ollama / optional Gemini for structured decisions</li>
+              
+                <li>Model-assisted evaluation and automation</li>
+              
+                <li>Docker Compose and CI verification</li>
               
             </ul>
           
-          <p class="summary">Kalshi trading experiments that combine model-assisted signals with structured evaluation and clear boundaries between research and production concerns. The repository tracks orchestration, API usage, and how results are recorded so ideas stay reproducible and reviewable over time.</p>
+          <p class="summary">Local simulated Kalshi assistant: polls RSS, matches headlines to open markets via embeddings or fallbacks, and uses an LLM for structured pass/trade decisions—fills are simulated at mids with fees; no real orders and no trading credentials for execution. CouchDB holds state; optional credentials are only for read-only market data when you enable WS tickers.</p>
         </li>
       
         <li class="repo-card">
@@ -298,15 +306,15 @@
               
                 <li>React + Vite wizard UI</li>
               
-                <li>Optional OpenAI BYOK assist (auditable prompts)</li>
-              
-                <li>Optional encrypted AWS profiles + VPC/subnet discovery</li>
-              
-                <li>Terraform-style generation + code preview drawer</li>
-              
                 <li>Go API with SQLite and preview pipeline</li>
               
-                <li>Docker Compose; AWS serverless hosting (GitHub Actions)</li>
+                <li>Optional OpenAI BYOK assist (auditable prompts)</li>
+              
+                <li>AES-GCM encrypted AWS profiles + VPC/subnet discovery</li>
+              
+                <li>Operator guardrails + documented security model</li>
+              
+                <li>Terraform-style preview drawer; Docker + AWS Actions deploy</li>
               
             </ul>
           
@@ -327,7 +335,7 @@
               
                 <li>Rust async</li>
               
-                <li>Local AI runtimes</li>
+                <li>Local / self-hosted AI runtimes</li>
               
                 <li>Service boundaries</li>
               
@@ -335,7 +343,7 @@
               
             </ul>
           
-          <p class="summary">Rust worker for local or self-hosted AI workflows, oriented toward performance and clear boundaries when talking to model runtimes. It shows how I lean on the type system and async tooling in Rust to keep integration code small and testable.</p>
+          <p class="summary">Rust worker for local or self-hosted AI workflows—workloads and data stay on your machine or chosen host. Emphasis on performance and bounded integration surfaces when talking to model runtimes, using Rust’s type system and async tooling to keep integration code small and testable.</p>
         </li>
       
         <li class="repo-card">
