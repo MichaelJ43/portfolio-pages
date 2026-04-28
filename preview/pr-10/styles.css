@@ -105,6 +105,11 @@
   gap: 0.4rem;
 }
 
+/* Skills section only: center pill rows within each category card */
+section[aria-labelledby="skills-title"] .inline-list {
+  justify-content: center;
+}
+
 .inline-list li {
   padding: 0.18rem 0.5rem;
   border: 1px solid var(--m43-border);
@@ -112,7 +117,6 @@
   background: var(--m43-surface);
   color: var(--m43-muted);
   font-size: 0.82rem;
-  text-align: center;
 }
 
 .nav-card h3 a {
@@ -232,6 +236,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.4rem;
+  justify-content: flex-start;
 }
 
 .skill-list li {
