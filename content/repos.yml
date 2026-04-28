@@ -139,8 +139,7 @@ repos:
     url: https://github.com/michaelj43/echo
     language: TypeScript
     language_shares:
-      - name: Rust
-        pct: 13
+      - Rust
     skills:
       - Tauri desktop apps
       - API client UX
@@ -161,8 +160,7 @@ repos:
     url: https://github.com/michaelj43/card-game
     language: TypeScript
     language_shares:
-      - name: HCL
-        pct: 10
+      - HCL
     skills:
       - React + TypeScript UI
       - Multiplayer REST + WebSocket APIs (AWS)
@@ -201,8 +199,7 @@ repos:
     url: https://github.com/michaelj43/iac-builder
     language: TypeScript
     language_shares:
-      - name: Go
-        pct: 54
+      - Go
     skills:
       - Infrastructure UX
       - Guided workflows
