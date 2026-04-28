@@ -27,6 +27,8 @@ jobs:
           crystal build --release src/sitegen.cr -o bin/sitegen
 
       - name: Build static site
+        env:
+          CONTACT_EMAIL: ${{ secrets.CONTACT_EMAIL }}
         run: ./bin/sitegen
 
       - name: Publish to gh-pages
