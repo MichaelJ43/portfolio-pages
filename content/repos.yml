@@ -205,11 +205,11 @@ repos:
       - TypeScript
     skills:
       - React + Vite wizard UI
-      - Go API with SQLite and preview pipeline
-      - Terraform-oriented generation and code preview drawer
-      - Optional encrypted AWS profiles and VPC/subnet discovery
       - Optional OpenAI BYOK assist (auditable prompts)
-      - Docker Compose; AWS serverless hosting with GitHub Actions
+      - Optional encrypted AWS profiles + VPC/subnet discovery
+      - Terraform-style generation + code preview drawer
+      - Go API with SQLite and preview pipeline
+      - Docker Compose; AWS serverless hosting (GitHub Actions)
     extra_links:
       - label: Live app
         url: https://iacbuilder.michaelj43.dev
