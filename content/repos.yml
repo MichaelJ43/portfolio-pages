@@ -43,6 +43,14 @@ skills:
       - New Relic dashboards and alerts
       - Slack alert integration
       - Performance-minded services
+  - title: Security
+    items:
+      - Identity and access management
+      - Secrets management and rotation
+      - Encryption at rest and in transit
+      - CI/CD & supply chain security
+      - IaC policy & guardrails
+      - Vulnerability management
 
 site_technical_aspects:
   - title: Static generation
