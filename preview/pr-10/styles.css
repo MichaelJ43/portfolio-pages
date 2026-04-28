@@ -105,9 +105,20 @@
   gap: 0.4rem;
 }
 
-/* Skills section only: center pill rows within each category card */
-section[aria-labelledby="skills-title"] .inline-list {
+/* Skills category cards: center wrapped pill rows inside each card */
+.skills-section .skills-pill-cluster {
+  width: 100%;
+}
+
+.skills-section .inline-list--skills {
+  width: 100%;
+  max-width: 100%;
   justify-content: center;
+  box-sizing: border-box;
+}
+
+.skills-section .inline-list--skills > li {
+  flex: 0 0 auto;
 }
 
 .inline-list li {
