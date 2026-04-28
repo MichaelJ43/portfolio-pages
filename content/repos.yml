@@ -137,8 +137,8 @@ repos:
     title: Echo
     repo: michaelj43/echo
     url: https://github.com/michaelj43/echo
-    language: TypeScript
-    language_shares:
+    languages:
+      - TypeScript
       - Rust
     skills:
       - Tauri desktop apps
@@ -158,8 +158,8 @@ repos:
     title: card-game
     repo: michaelj43/card-game
     url: https://github.com/michaelj43/card-game
-    language: TypeScript
-    language_shares:
+    languages:
+      - TypeScript
       - HCL
     skills:
       - React + TypeScript UI
@@ -181,7 +181,8 @@ repos:
     title: spiffy-trader
     repo: michaelj43/spiffy-trader
     url: https://github.com/michaelj43/spiffy-trader
-    language: TypeScript
+    languages:
+      - TypeScript
     skills:
       - External API integration
       - Model-assisted evaluation
@@ -197,9 +198,9 @@ repos:
     title: iac-builder
     repo: michaelj43/iac-builder
     url: https://github.com/michaelj43/iac-builder
-    language: TypeScript
-    language_shares:
+    languages:
       - Go
+      - TypeScript
     skills:
       - Infrastructure UX
       - Guided workflows
@@ -218,7 +219,8 @@ repos:
     title: local-ai-worker
     repo: michaelj43/local-ai-worker
     url: https://github.com/michaelj43/local-ai-worker
-    language: Rust
+    languages:
+      - Rust
     skills:
       - Rust async
       - Local AI runtimes
@@ -234,7 +236,8 @@ repos:
     title: adaptive-pipe
     repo: michaelj43/adaptive-pipe
     url: https://github.com/michaelj43/adaptive-pipe
-    language: Go
+    languages:
+      - Go
     skills:
       - Go concurrency
       - Streaming pipelines
