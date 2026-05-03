@@ -52,6 +52,34 @@ skills:
       - IaC policy & guardrails
       - Vulnerability management
 
+# Resume-aligned technical emphasis (Capital One, Compare.com): AWS/Azure, IaC, CI/CD,
+# MSBuild & NPM automation, New Relic & Slack, VMs/containers, CDN & blob storage.
+workplace_skills:
+  - title: Productivity suites
+    items:
+      - Microsoft 365 (Word, Excel, PowerPoint, Outlook)
+      - Google Workspace (Docs, Sheets, Slides, Drive)
+      - Spreadsheet analysis & reporting
+      - Presentation design & narrative
+  - title: Delivery & agility
+    items:
+      - Agile & Scrum
+      - Kanban
+      - Iteration planning & backlog refinement
+      - Release coordination with QA and ops
+  - title: Collaboration & leadership
+    items:
+      - Cross-functional stakeholder alignment
+      - Technical writing & runbooks
+      - Mentorship & knowledge sharing
+      - Data-informed prioritization
+  - title: Enterprise platforms
+    items:
+      - Work tracking (Jira, Azure DevOps)
+      - Wiki & intranet documentation (Confluence-style)
+      - Chat & meetings (Slack, Microsoft Teams)
+      - ITSM basics (incidents, change requests)
+
 site_technical_aspects:
   - title: Static generation
     description: >-

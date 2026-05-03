@@ -61,6 +61,27 @@
       </details>
     </section>
 
+    <section class="collapsible-section skills-section" aria-labelledby="workplace-skills-title">
+      <details>
+        <summary id="workplace-skills-title">Workplace &amp; collaboration</summary>
+        <p class="details-intro">Enterprise productivity tools, delivery practices, and cross-team communication—not role-specific engineering stacks.</p>
+        <div class="info-grid">
+          <% @workplace_skills.each do |group| %>
+            <article>
+              <h3><%= HTML.escape group.title %></h3>
+              <div class="skills-pill-cluster">
+                <ul class="inline-list inline-list--skills">
+                  <% group.items.each do |item| %>
+                    <li><%= HTML.escape item %></li>
+                  <% end %>
+                </ul>
+              </div>
+            </article>
+          <% end %>
+        </div>
+      </details>
+    </section>
+
     <h2 class="section-title m43-section-title">Selected work</h2>
     <ul class="repo-list">
       <% @repos.each do |repo| %>

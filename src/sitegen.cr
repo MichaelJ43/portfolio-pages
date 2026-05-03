@@ -67,6 +67,7 @@ struct SiteRoot
   include YAML::Serializable
   property site : SiteMeta
   property skills : Array(SkillGroup) = [] of SkillGroup
+  property workplace_skills : Array(SkillGroup) = [] of SkillGroup
   property site_technical_aspects : Array(DescribedItem) = [] of DescribedItem
   property navigation : Array(NavigationItem) = [] of NavigationItem
   property corporate_projects : Array(CorporateProject) = [] of CorporateProject
@@ -78,6 +79,7 @@ struct PageView
   getter intro : String
   getter links : Array(LinkItem)
   getter skills : Array(SkillGroup)
+  getter workplace_skills : Array(SkillGroup)
   getter site_technical_aspects : Array(DescribedItem)
   getter repos : Array(RepoItem)
 
@@ -86,6 +88,7 @@ struct PageView
     @intro = root.site.intro
     @links = Sitegen.site_links_with_optional_contact(root.site.links)
     @skills = root.skills
+    @workplace_skills = root.workplace_skills
     @site_technical_aspects = root.site_technical_aspects
     @repos = root.repos
   end
