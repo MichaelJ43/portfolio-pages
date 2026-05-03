@@ -179,9 +179,9 @@ repos:
     url: https://github.com/michaelj43/card-game
     live_url: https://cardgame.michaelj43.dev
     badge:
-      src: https://img.shields.io/github/v/release/michaelj43/card-game?label=release
-      href: https://github.com/michaelj43/card-game/releases
-      alt: Release
+      src: https://github.com/michaelj43/card-game/actions/workflows/deploy.yml/badge.svg?branch=main
+      href: https://github.com/michaelj43/card-game/actions/workflows/deploy.yml
+      alt: Deploy to production workflow status
     languages:
       - TypeScript
       - HCL
@@ -231,9 +231,9 @@ repos:
     url: https://github.com/michaelj43/iac-builder
     live_url: https://iacbuilder.michaelj43.dev
     badge:
-      src: https://img.shields.io/github/v/release/michaelj43/iac-builder?label=release
-      href: https://github.com/michaelj43/iac-builder/releases
-      alt: Release
+      src: https://github.com/michaelj43/iac-builder/actions/workflows/deploy-aws.yml/badge.svg?branch=main
+      href: https://github.com/michaelj43/iac-builder/actions/workflows/deploy-aws.yml
+      alt: Deploy to production workflow status
     languages:
       - Go
       - TypeScript
@@ -257,9 +257,9 @@ repos:
     repo: michaelj43/spiffy-trader
     url: https://github.com/michaelj43/spiffy-trader
     badge:
-      src: https://img.shields.io/github/v/release/michaelj43/spiffy-trader?label=release
-      href: https://github.com/michaelj43/spiffy-trader/releases
-      alt: Release
+      src: https://github.com/michaelj43/spiffy-trader/actions/workflows/ci.yml/badge.svg?branch=main
+      href: https://github.com/michaelj43/spiffy-trader/actions/workflows/ci.yml
+      alt: CI workflow status
     languages:
       - TypeScript
     skills:
@@ -298,10 +298,6 @@ repos:
     title: adaptive-pipe
     repo: michaelj43/adaptive-pipe
     url: https://github.com/michaelj43/adaptive-pipe
-    badge:
-      src: https://img.shields.io/github/v/release/michaelj43/adaptive-pipe?label=release
-      href: https://github.com/michaelj43/adaptive-pipe/releases
-      alt: Release
     languages:
       - Go
     skills:
