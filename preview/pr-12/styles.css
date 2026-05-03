@@ -1,0 +1,286 @@
+/* App layout and components; global tokens and .m43 base come from m43-tokens.css (loaded first). */
+
+.site-header {
+  max-width: var(--m43-content-max);
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 1rem;
+  border-bottom: 1px solid var(--m43-border);
+}
+
+.site-header h1 {
+  margin: 0 0 0.75rem;
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  letter-spacing: -0.02em;
+}
+
+.intro {
+  margin: 0 0 1rem;
+  color: var(--m43-muted);
+  max-width: 48rem;
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+}
+
+.m43-main {
+  max-width: var(--m43-content-max);
+  margin: 0 auto;
+  padding: 2rem 1.25rem 3rem;
+}
+
+.section-title {
+  margin: 0 0 1.25rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--m43-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.collapsible-section {
+  margin: 0 0 1.75rem;
+}
+
+.collapsible-section details {
+  background: var(--m43-elevated);
+  border: 1px solid var(--m43-border);
+  border-radius: var(--m43-radius-lg);
+  padding: 1rem 1.15rem;
+}
+
+.collapsible-section summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.collapsible-section summary:hover {
+  color: var(--m43-accent);
+}
+
+.details-intro {
+  margin: 1rem 0;
+  max-width: 48rem;
+  color: var(--m43-muted);
+}
+
+.info-grid,
+.nav-card-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+}
+
+.info-grid article,
+.nav-card,
+.corporate-card {
+  background: var(--m43-elevated);
+  border: 1px solid var(--m43-border);
+  border-radius: var(--m43-radius-lg);
+  padding: 1rem 1.1rem;
+}
+
+.info-grid h3,
+.nav-card h3,
+.corporate-card h3 {
+  margin: 0 0 0.45rem;
+  font-size: 1rem;
+}
+
+.info-grid p,
+.nav-card p {
+  margin: 0;
+  color: var(--m43-muted);
+  font-size: 0.94rem;
+}
+
+.inline-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+/* Skills category cards: center wrapped pill rows inside each card */
+.skills-section .skills-pill-cluster {
+  width: 100%;
+}
+
+.skills-section .inline-list--skills {
+  width: 100%;
+  max-width: 100%;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.skills-section .inline-list--skills > li {
+  flex: 0 0 auto;
+  text-align: center;
+  text-wrap: balance;
+}
+
+.skills-section .info-grid article > h3 {
+  text-align: center;
+}
+
+.inline-list li {
+  padding: 0.18rem 0.5rem;
+  border: 1px solid var(--m43-border);
+  border-radius: 999px;
+  background: var(--m43-surface);
+  color: var(--m43-muted);
+  font-size: 0.82rem;
+}
+
+.nav-card h3 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.nav-card h3 a:hover {
+  color: var(--m43-accent);
+  text-decoration: underline;
+}
+
+.nav-card__note {
+  display: inline-block;
+  margin: 0 0 0.55rem !important;
+  padding: 0.1rem 0.45rem;
+  border: 1px solid var(--m43-border);
+  border-radius: 999px;
+  background: var(--m43-surface);
+  font-size: 0.78rem !important;
+}
+
+.corporate-list {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.corporate-card__heading {
+  margin: 0 0 0.75rem;
+}
+
+.corporate-card__heading p {
+  margin: 0;
+  color: var(--m43-muted);
+  font-size: 0.9rem;
+}
+
+.highlight-list {
+  margin: 0.9rem 0;
+  padding-left: 1.2rem;
+  color: var(--m43-text);
+}
+
+.highlight-list li + li {
+  margin-top: 0.45rem;
+}
+
+.repo-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1.25rem;
+}
+
+/* m43-card omitted: repo-card grid + padding already match product layout; shell card styles could double borders. */
+.repo-card {
+  background: var(--m43-elevated);
+  border: 1px solid var(--m43-border);
+  border-radius: var(--m43-radius-lg);
+  padding: 1.25rem 1.35rem;
+}
+
+.repo-card h3 {
+  margin: 0 0 0.35rem;
+  font-size: 1.2rem;
+}
+
+.repo-card h3 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.repo-card h3 a:hover {
+  color: var(--m43-accent);
+  text-decoration: underline;
+}
+
+.repo-link-row {
+  margin: 0 0 0.5rem;
+  font-size: 0.9rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.2rem 0.35rem;
+}
+
+.repo-link-row .link-sep {
+  color: var(--m43-muted);
+  user-select: none;
+}
+
+.repo-meta {
+  margin: 0 0 0.75rem;
+  font-size: 0.875rem;
+  color: var(--m43-muted);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+}
+
+.repo-name {
+  font-family: var(--m43-font-mono);
+}
+
+.lang {
+  padding: 0.1rem 0.45rem;
+  border-radius: var(--m43-radius-sm);
+  background: var(--m43-surface);
+  border: 1px solid var(--m43-border);
+}
+
+.skill-list {
+  list-style: none;
+  margin: 0 0 0.9rem;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  justify-content: flex-start;
+}
+
+.skill-list li {
+  padding: 0.2rem 0.55rem;
+  border: 1px solid var(--m43-border);
+  border-radius: 999px;
+  background: var(--m43-surface);
+  color: var(--m43-muted);
+  font-size: 0.82rem;
+  line-height: 1.4;
+  text-align: left;
+}
+
+.summary {
+  margin: 0;
+  color: var(--m43-text);
+}
+
+.site-footer {
+  max-width: var(--m43-content-max);
+  margin: 0 auto;
+  padding: 2rem 1.25rem 3rem;
+  border-top: 1px solid var(--m43-border);
+  font-size: 0.875rem;
+  color: var(--m43-muted);
+}
+
+.site-footer p {
+  margin: 0;
+}
