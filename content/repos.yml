@@ -51,6 +51,14 @@ skills:
       - CI/CD & supply chain security
       - IaC policy & guardrails
       - Vulnerability management
+  - title: Code & dependency scanning
+    items:
+      - SonarQube / SonarCloud
+      - Mend (WhiteSource) & SCA
+      - SAST & quality gates in CI
+      - Repo secret scanning
+      - Container & compiled artifact scanning
+      - SBOM & dependency policy checks
 
 # Resume-aligned technical emphasis (Capital One, Compare.com): AWS/Azure, IaC, CI/CD,
 # MSBuild & NPM automation, New Relic & Slack, VMs/containers, CDN & blob storage.
