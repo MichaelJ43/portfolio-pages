@@ -80,14 +80,21 @@ navigation:
     description: >-
       Browser card table with online play: AWS HTTP + WebSocket APIs, WebRTC table sync,
       and Terraform-defined infrastructure; static app on a custom domain.
+  - title: Kubernetes mono app
+    url: https://k8s.michaelj43.dev
+    description: >-
+      Portfolio mono-repo on EKS: Go API, static portal with public status, Argo CD GitOps,
+      Terraform foundation, Kustomize manifests, and GitHub Actions for CI and deploy.
   - title: iac-builder
     url: https://iacbuilder.michaelj43.dev
     description: >-
       Guided IaC wizard (React + Go): live code preview, optional AWS discovery,
       BYOK OpenAI assist, operator guardrails, Docker Compose, and AWS serverless deploy.
-  - title: Echo web page
-    url: https://michaelj43.github.io/echo-web/
-    description: Marketing and documentation surface for the Echo API client.
+  - title: Echo
+    url: https://echo.michaelj43.dev
+    description: >-
+      Marketing and documentation site for the Echo HTTP API desktop client (Tauri),
+      with automated deploys and PR previews.
   - title: Corporate Projects
     url: https://michaelj43.dev/corporate-projects/
     description: Public summary of enterprise DevOps, cloud, automation, and developer tooling work.
@@ -147,6 +154,11 @@ repos:
     title: Echo
     repo: michaelj43/echo
     url: https://github.com/michaelj43/echo
+    live_url: https://echo.michaelj43.dev
+    badge:
+      src: https://img.shields.io/github/v/release/michaelj43/echo?label=release
+      href: https://github.com/michaelj43/echo/releases
+      alt: Release
     languages:
       - TypeScript
       - Rust
@@ -155,19 +167,21 @@ repos:
       - API client UX
       - Auth workflows
       - CI/CD and PR previews
-    extra_links:
-      - label: echo-web (GitHub Pages)
-        url: https://michaelj43.github.io/echo-web/
     summary: >-
       Cross-platform desktop app for exploring HTTP APIs—collections, environments,
-      auth, and request/response views—built with Tauri. The echo-web project site
-      is the marketing and documentation surface published on GitHub Pages, with
-      automated deploys and PR previews for contributor-friendly iteration.
+      auth, and request/response views—built with Tauri. The public site at
+      echo.michaelj43.dev is the marketing and documentation surface, with automated
+      deploys and PR previews for contributor-friendly iteration.
 
   - slug: card-game
     title: card-game
     repo: michaelj43/card-game
     url: https://github.com/michaelj43/card-game
+    live_url: https://cardgame.michaelj43.dev
+    badge:
+      src: https://img.shields.io/github/v/release/michaelj43/card-game?label=release
+      href: https://github.com/michaelj43/card-game/releases
+      alt: Release
     languages:
       - TypeScript
       - HCL
@@ -177,9 +191,6 @@ repos:
       - WebRTC data channel + signaling
       - DynamoDB + Lambda room services
       - Terraform + custom domain hosting
-    extra_links:
-      - label: Live app
-        url: https://cardgame.michaelj43.dev
     summary: >-
       Browser card table with many YAML-driven games, AI seats, and online play.
       An AWS multiplayer stack handles rooms, JWT-gated signaling over WebSocket,
@@ -187,10 +198,68 @@ repos:
       WebRTC while Terraform defines the infrastructure. The live app is on a
       custom domain so friends and reviewers can try builds without cloning.
 
+  - slug: kubernetes-mono-app
+    title: kubernetes-mono-app
+    repo: michaelj43/kubernetes-mono-app
+    url: https://github.com/michaelj43/kubernetes-mono-app
+    live_url: https://k8s.michaelj43.dev
+    badge:
+      src: https://github.com/michaelj43/kubernetes-mono-app/actions/workflows/terraform-apply.yaml/badge.svg?branch=main
+      href: https://github.com/michaelj43/kubernetes-mono-app/actions/workflows/terraform-apply.yaml
+      alt: Deploy workflow status
+    languages:
+      - Go
+      - TypeScript
+      - HCL
+    skills:
+      - EKS-oriented Kubernetes
+      - Argo CD GitOps
+      - Terraform (VPC, EKS, OIDC)
+      - Kustomize + ALB Ingress
+      - GitHub Actions (CI, images, bootstrap)
+      - CloudNativePG and Redis patterns
+    summary: >-
+      Portfolio mono-repo with a Go API, static portal (apex landing plus public
+      /status for Argo health), GitOps Application CRs, Terraform for VPC/EKS and
+      GitHub OIDC roles, Kustomize overlays with ACM discovery for TLS, and Actions
+      for tests, GHCR images, and Argo bootstrap—oriented toward reproducible bring-up
+      on AWS.
+
+  - slug: iac-builder
+    title: iac-builder
+    repo: michaelj43/iac-builder
+    url: https://github.com/michaelj43/iac-builder
+    live_url: https://iacbuilder.michaelj43.dev
+    badge:
+      src: https://img.shields.io/github/v/release/michaelj43/iac-builder?label=release
+      href: https://github.com/michaelj43/iac-builder/releases
+      alt: Release
+    languages:
+      - Go
+      - TypeScript
+    skills:
+      - React + Vite wizard UI
+      - Optional OpenAI BYOK assist (auditable prompts)
+      - Optional encrypted AWS profiles + VPC/subnet discovery
+      - Terraform-style generation + code preview drawer
+      - Go API with SQLite and preview pipeline
+      - Docker Compose; AWS serverless hosting (GitHub Actions)
+    summary: >-
+      Guided Infrastructure-as-Code generator: a React wizard fronts a Go API
+      that produces previewable Terraform-style output in a code drawer, with
+      sensible defaults, optional encrypted AWS credential profiles for discovery,
+      and optional OpenAI BYOK suggestions under operator-controlled guardrails.
+      Local runs use Docker Compose; production paths cover S3, CloudFront, and
+      Lambda with documented Terraform and CI deploy/destroy workflows.
+
   - slug: spiffy-trader
     title: spiffy-trader
     repo: michaelj43/spiffy-trader
     url: https://github.com/michaelj43/spiffy-trader
+    badge:
+      src: https://img.shields.io/github/v/release/michaelj43/spiffy-trader?label=release
+      href: https://github.com/michaelj43/spiffy-trader/releases
+      alt: Release
     languages:
       - TypeScript
     skills:
@@ -204,35 +273,14 @@ repos:
       concerns. The repository tracks orchestration, API usage, and how results are
       recorded so ideas stay reproducible and reviewable over time.
 
-  - slug: iac-builder
-    title: iac-builder
-    repo: michaelj43/iac-builder
-    url: https://github.com/michaelj43/iac-builder
-    languages:
-      - Go
-      - TypeScript
-    skills:
-      - React + Vite wizard UI
-      - Optional OpenAI BYOK assist (auditable prompts)
-      - Optional encrypted AWS profiles + VPC/subnet discovery
-      - Terraform-style generation + code preview drawer
-      - Go API with SQLite and preview pipeline
-      - Docker Compose; AWS serverless hosting (GitHub Actions)
-    extra_links:
-      - label: Live app
-        url: https://iacbuilder.michaelj43.dev
-    summary: >-
-      Guided Infrastructure-as-Code generator: a React wizard fronts a Go API
-      that produces previewable Terraform-style output in a code drawer, with
-      sensible defaults, optional encrypted AWS credential profiles for discovery,
-      and optional OpenAI BYOK suggestions under operator-controlled guardrails.
-      Local runs use Docker Compose; production paths cover S3, CloudFront, and
-      Lambda with documented Terraform and CI deploy/destroy workflows.
-
   - slug: local-ai-worker
     title: local-ai-worker
     repo: michaelj43/local-ai-worker
     url: https://github.com/michaelj43/local-ai-worker
+    badge:
+      src: https://img.shields.io/github/v/release/michaelj43/local-ai-worker?label=release
+      href: https://github.com/michaelj43/local-ai-worker/releases
+      alt: Release
     languages:
       - Rust
     skills:
@@ -250,6 +298,10 @@ repos:
     title: adaptive-pipe
     repo: michaelj43/adaptive-pipe
     url: https://github.com/michaelj43/adaptive-pipe
+    badge:
+      src: https://img.shields.io/github/v/release/michaelj43/adaptive-pipe?label=release
+      href: https://github.com/michaelj43/adaptive-pipe/releases
+      alt: Release
     languages:
       - Go
     skills:

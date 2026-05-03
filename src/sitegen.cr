@@ -20,17 +20,42 @@ struct SiteMeta
   property links : Array(LinkItem) = [] of LinkItem
 end
 
+struct RepoBadge
+  include YAML::Serializable
+  property src : String
+  property href : String? = nil
+  property alt : String = "Release"
+end
+
 struct RepoItem
   include YAML::Serializable
   property slug : String
   property title : String
   property repo : String
   property url : String
+  # When set, the card title links here (live app); otherwise title links to `url` with a "(Github)" suffix.
+  property live_url : String? = nil
+  property badge : RepoBadge? = nil
   # Languages in the repo, most-used first (four shown on the site).
   property languages : Array(String) = [] of String
   property skills : Array(String) = [] of String
   property summary : String
   property extra_links : Array(LinkItem) = [] of LinkItem
+
+  def primary_url : String
+    lu = live_url
+    lu.nil? || lu.empty? ? url : lu
+  end
+
+  def primary_title : String
+    lu = live_url
+    (lu.nil? || lu.empty?) ? "#{title} (Github)" : title
+  end
+
+  def github_sub_link? : Bool
+    lu = live_url
+    !(lu.nil? || lu.empty?)
+  end
 end
 
 struct SkillGroup
