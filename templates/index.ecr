@@ -40,44 +40,37 @@
       </details>
     </section>
 
-    <section class="collapsible-section skills-section" aria-labelledby="skills-title">
+    <section class="collapsible-section skills-index-section" aria-labelledby="skills-title">
       <details>
         <summary id="skills-title">Skills</summary>
-        <p class="details-intro">A YAML-driven skill index that can grow with the portfolio.</p>
-        <div class="info-grid">
-          <% @skills.each do |group| %>
-            <article>
-              <h3><%= HTML.escape group.title %></h3>
-              <div class="skills-pill-cluster">
+        <p class="details-intro">YAML-driven technical depth and workplace collaboration skills, grouped for quick scanning.</p>
+        <div class="skill-index">
+          <section class="skill-index__grouping" aria-labelledby="skills-technical-heading">
+            <h3 class="skill-index__grouping-title" id="skills-technical-heading">Technical</h3>
+            <% @skills.each do |group| %>
+              <div class="skill-index__category">
+                <h4 class="skill-index__category-title"><%= HTML.escape group.title %></h4>
                 <ul class="inline-list inline-list--skills">
                   <% group.items.each do |item| %>
                     <li><%= HTML.escape item %></li>
                   <% end %>
                 </ul>
               </div>
-            </article>
-          <% end %>
-        </div>
-      </details>
-    </section>
-
-    <section class="collapsible-section skills-section" aria-labelledby="workplace-skills-title">
-      <details>
-        <summary id="workplace-skills-title">Workplace &amp; collaboration</summary>
-        <p class="details-intro">Enterprise productivity tools, delivery practices, and cross-team communication—not role-specific engineering stacks.</p>
-        <div class="info-grid">
-          <% @workplace_skills.each do |group| %>
-            <article>
-              <h3><%= HTML.escape group.title %></h3>
-              <div class="skills-pill-cluster">
+            <% end %>
+          </section>
+          <section class="skill-index__grouping" aria-labelledby="skills-workplace-heading">
+            <h3 class="skill-index__grouping-title" id="skills-workplace-heading">Workplace &amp; collaboration</h3>
+            <% @workplace_skills.each do |group| %>
+              <div class="skill-index__category">
+                <h4 class="skill-index__category-title"><%= HTML.escape group.title %></h4>
                 <ul class="inline-list inline-list--skills">
                   <% group.items.each do |item| %>
                     <li><%= HTML.escape item %></li>
                   <% end %>
                 </ul>
               </div>
-            </article>
-          <% end %>
+            <% end %>
+          </section>
         </div>
       </details>
     </section>
