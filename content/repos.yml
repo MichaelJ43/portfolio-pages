@@ -57,7 +57,7 @@ skills:
       - Mend (WhiteSource) & SCA
       - SAST & quality gates in CI
       - Repo secret scanning
-      - Container & compiled artifact scanning
+      - Image & binary scanning
       - SBOM & dependency policy checks
 
 # Resume-aligned technical emphasis (Capital One, Compare.com): AWS/Azure, IaC, CI/CD,
@@ -65,28 +65,28 @@ skills:
 workplace_skills:
   - title: Productivity suites
     items:
-      - Microsoft 365 (Word, Excel, PowerPoint, Outlook)
-      - Google Workspace (Docs, Sheets, Slides, Drive)
+      - Microsoft 365
+      - Google Workspace
       - Spreadsheet analysis & reporting
       - Presentation design & narrative
   - title: Delivery & agility
     items:
-      - Agile & Scrum
-      - Kanban
-      - Iteration planning & backlog refinement
-      - Release coordination with QA and ops
+      - Agile, Scrum, or Kanban
+      - Iteration planning
+      - Backlog refinement
+      - Release coordination
   - title: Collaboration & leadership
     items:
-      - Cross-functional stakeholder alignment
+      - Stakeholder alignment
       - Technical writing & runbooks
       - Mentorship & knowledge sharing
       - Data-informed prioritization
-  - title: Enterprise platforms
+  - title: Work tracking & communication
     items:
-      - Work tracking (Jira, Azure DevOps)
-      - Wiki & intranet documentation (Confluence-style)
-      - Chat & meetings (Slack, Microsoft Teams)
-      - ITSM basics (incidents, change requests)
+      - Jira & Azure DevOps
+      - Confluence & internal docs
+      - Slack & Microsoft Teams
+      - Incidents & change requests
 
 site_technical_aspects:
   - title: Static generation
