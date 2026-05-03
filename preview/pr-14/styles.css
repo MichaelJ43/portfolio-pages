@@ -202,37 +202,14 @@
   font-size: 1.2rem;
 }
 
-.repo-card__title-row {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.5rem 0.75rem;
-}
-
-.repo-card__title-link {
+.repo-card h3 a {
   color: inherit;
   text-decoration: none;
 }
 
-.repo-card__title-link:hover {
+.repo-card h3 a:hover {
   color: var(--m43-accent);
   text-decoration: underline;
-}
-
-.repo-card__badge-link {
-  line-height: 0;
-  text-decoration: none;
-}
-
-.repo-card__badge-link:hover {
-  opacity: 0.85;
-}
-
-.repo-card__badge {
-  display: block;
-  height: 20px;
-  width: auto;
-  vertical-align: middle;
 }
 
 .repo-link-row {
