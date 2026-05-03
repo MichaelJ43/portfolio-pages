@@ -118,9 +118,11 @@
 }
 
 .skills-section .inline-list--skills > li {
-  flex: 0 0 auto;
+  flex: 0 1 auto;
+  max-width: 100%;
   text-align: center;
   text-wrap: balance;
+  overflow-wrap: anywhere;
 }
 
 .skills-section .info-grid article > h3 {
