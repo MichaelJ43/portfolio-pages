@@ -62,15 +62,16 @@
       </details>
     </section>
 
-    <section class="collapsible-section skills-section" aria-labelledby="skills-title">
+    <section class="collapsible-section skills-index-section" aria-labelledby="skills-title">
       <details>
         <summary id="skills-title">Skills</summary>
-        <p class="details-intro">A YAML-driven skill index that can grow with the portfolio.</p>
-        <div class="info-grid">
-          
-            <article>
-              <h3>Cloud and infrastructure</h3>
-              <div class="skills-pill-cluster">
+        <p class="details-intro">YAML-driven technical depth and workplace collaboration skills, grouped for quick scanning.</p>
+        <div class="skill-index">
+          <section class="skill-index__grouping" aria-labelledby="skills-technical-heading">
+            <h3 class="skill-index__grouping-title" id="skills-technical-heading">Technical</h3>
+            
+              <div class="skill-index__category">
+                <h4 class="skill-index__category-title">Cloud and infrastructure</h4>
                 <ul class="inline-list inline-list--skills">
                   
                     <li>AWS</li>
@@ -87,11 +88,9 @@
                   
                 </ul>
               </div>
-            </article>
-          
-            <article>
-              <h3>DevOps and automation</h3>
-              <div class="skills-pill-cluster">
+            
+              <div class="skill-index__category">
+                <h4 class="skill-index__category-title">DevOps and automation</h4>
                 <ul class="inline-list inline-list--skills">
                   
                     <li>CI/CD pipeline design</li>
@@ -108,11 +107,9 @@
                   
                 </ul>
               </div>
-            </article>
-          
-            <article>
-              <h3>Product and platform engineering</h3>
-              <div class="skills-pill-cluster">
+            
+              <div class="skill-index__category">
+                <h4 class="skill-index__category-title">Product and platform engineering</h4>
                 <ul class="inline-list inline-list--skills">
                   
                     <li>TypeScript applications</li>
@@ -129,11 +126,9 @@
                   
                 </ul>
               </div>
-            </article>
-          
-            <article>
-              <h3>Systems and observability</h3>
-              <div class="skills-pill-cluster">
+            
+              <div class="skill-index__category">
+                <h4 class="skill-index__category-title">Systems and observability</h4>
                 <ul class="inline-list inline-list--skills">
                   
                     <li>Rust async tooling</li>
@@ -150,11 +145,9 @@
                   
                 </ul>
               </div>
-            </article>
-          
-            <article>
-              <h3>Security</h3>
-              <div class="skills-pill-cluster">
+            
+              <div class="skill-index__category">
+                <h4 class="skill-index__category-title">Security</h4>
                 <ul class="inline-list inline-list--skills">
                   
                     <li>Identity and access management</li>
@@ -171,11 +164,9 @@
                   
                 </ul>
               </div>
-            </article>
-          
-            <article>
-              <h3>Code &amp; dependency scanning</h3>
-              <div class="skills-pill-cluster">
+            
+              <div class="skill-index__category">
+                <h4 class="skill-index__category-title">Code &amp; dependency scanning</h4>
                 <ul class="inline-list inline-list--skills">
                   
                     <li>SonarQube / SonarCloud</li>
@@ -192,21 +183,13 @@
                   
                 </ul>
               </div>
-            </article>
-          
-        </div>
-      </details>
-    </section>
-
-    <section class="collapsible-section skills-section" aria-labelledby="workplace-skills-title">
-      <details>
-        <summary id="workplace-skills-title">Workplace &amp; collaboration</summary>
-        <p class="details-intro">Enterprise productivity tools, delivery practices, and cross-team communication—not role-specific engineering stacks.</p>
-        <div class="info-grid">
-          
-            <article>
-              <h3>Productivity suites</h3>
-              <div class="skills-pill-cluster">
+            
+          </section>
+          <section class="skill-index__grouping" aria-labelledby="skills-workplace-heading">
+            <h3 class="skill-index__grouping-title" id="skills-workplace-heading">Workplace &amp; collaboration</h3>
+            
+              <div class="skill-index__category">
+                <h4 class="skill-index__category-title">Productivity suites</h4>
                 <ul class="inline-list inline-list--skills">
                   
                     <li>Microsoft 365</li>
@@ -219,11 +202,9 @@
                   
                 </ul>
               </div>
-            </article>
-          
-            <article>
-              <h3>Delivery &amp; agility</h3>
-              <div class="skills-pill-cluster">
+            
+              <div class="skill-index__category">
+                <h4 class="skill-index__category-title">Delivery &amp; agility</h4>
                 <ul class="inline-list inline-list--skills">
                   
                     <li>Agile, Scrum, or Kanban</li>
@@ -236,11 +217,9 @@
                   
                 </ul>
               </div>
-            </article>
-          
-            <article>
-              <h3>Collaboration &amp; leadership</h3>
-              <div class="skills-pill-cluster">
+            
+              <div class="skill-index__category">
+                <h4 class="skill-index__category-title">Collaboration &amp; leadership</h4>
                 <ul class="inline-list inline-list--skills">
                   
                     <li>Stakeholder alignment</li>
@@ -253,11 +232,9 @@
                   
                 </ul>
               </div>
-            </article>
-          
-            <article>
-              <h3>Work tracking &amp; communication</h3>
-              <div class="skills-pill-cluster">
+            
+              <div class="skill-index__category">
+                <h4 class="skill-index__category-title">Work tracking &amp; communication</h4>
                 <ul class="inline-list inline-list--skills">
                   
                     <li>Jira &amp; Azure DevOps</li>
@@ -270,11 +247,9 @@
                   
                 </ul>
               </div>
-            </article>
-          
-            <article>
-              <h3>AI productivity tooling</h3>
-              <div class="skills-pill-cluster">
+            
+              <div class="skill-index__category">
+                <h4 class="skill-index__category-title">AI productivity tooling</h4>
                 <ul class="inline-list inline-list--skills">
                   
                     <li>ChatGPT, Copilot, &amp; Gemini for drafting &amp; review</li>
@@ -289,11 +264,9 @@
                   
                 </ul>
               </div>
-            </article>
-          
-            <article>
-              <h3>Distributed team operations</h3>
-              <div class="skills-pill-cluster">
+            
+              <div class="skill-index__category">
+                <h4 class="skill-index__category-title">Distributed team operations</h4>
                 <ul class="inline-list inline-list--skills">
                   
                     <li>Async-first communication</li>
@@ -306,8 +279,8 @@
                   
                 </ul>
               </div>
-            </article>
-          
+            
+          </section>
         </div>
       </details>
     </section>
