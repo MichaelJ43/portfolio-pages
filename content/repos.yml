@@ -87,6 +87,18 @@ workplace_skills:
       - Confluence & internal docs
       - Slack & Microsoft Teams
       - Incidents & change requests
+  - title: AI productivity tooling
+    items:
+      - ChatGPT, Copilot, & Gemini for drafting & review
+      - Cursor, Windsurf, & Claude for agentic work
+      - Prompt patterns for daily tasks
+      - AI-assisted code & doc workflows
+  - title: Distributed team operations
+    items:
+      - Async-first communication
+      - Offshore & cross-timezone handoffs
+      - Meeting hygiene & agendas
+      - Decision logs & follow-ups
 
 site_technical_aspects:
   - title: Static generation
