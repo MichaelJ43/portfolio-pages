@@ -16,6 +16,7 @@ end
 struct SiteMeta
   include YAML::Serializable
   property title : String
+  property subtitle : String? = nil
   property intro : String
   property links : Array(LinkItem) = [] of LinkItem
 end
@@ -101,6 +102,7 @@ end
 
 struct PageView
   getter page_title : String
+  getter subtitle : String?
   getter intro : String
   getter links : Array(LinkItem)
   getter skills : Array(SkillGroup)
@@ -110,6 +112,7 @@ struct PageView
 
   def initialize(root : SiteRoot)
     @page_title = root.site.title
+    @subtitle = root.site.subtitle
     @intro = root.site.intro
     @links = Sitegen.site_links_with_optional_contact(root.site.links)
     @skills = root.skills
