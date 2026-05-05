@@ -105,26 +105,59 @@
   gap: 0.4rem;
 }
 
-/* Skills category cards: center wrapped pill rows inside each card */
-.skills-section .skills-pill-cluster {
-  width: 100%;
+/* Skills index: single column, sub-headers + left-flowing pills with sidebar accent */
+.skills-index-section .skill-index {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  margin-top: 0.25rem;
 }
 
-.skills-section .inline-list--skills {
+.skills-index-section .skill-index__grouping {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.skills-index-section .skill-index__grouping-title {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--m43-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-bottom: 1px solid var(--m43-border);
+  padding-bottom: 0.4rem;
+}
+
+.skills-index-section .skill-index__category {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  border-left: 2px solid var(--m43-border);
+  padding-left: 0.85rem;
+}
+
+.skills-index-section .skill-index__category-title {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-align: left;
+}
+
+.skills-index-section .inline-list--skills {
   width: 100%;
   max-width: 100%;
-  justify-content: center;
+  justify-content: flex-start;
   box-sizing: border-box;
 }
 
-.skills-section .inline-list--skills > li {
-  flex: 0 0 auto;
-  text-align: center;
+.skills-index-section .inline-list--skills > li {
+  flex: 0 1 auto;
+  max-width: 100%;
+  text-align: left;
   text-wrap: balance;
-}
-
-.skills-section .info-grid article > h3 {
-  text-align: center;
+  overflow-wrap: anywhere;
 }
 
 .inline-list li {

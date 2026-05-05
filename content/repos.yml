@@ -51,6 +51,55 @@ skills:
       - CI/CD & supply chain security
       - IaC policy & guardrails
       - Vulnerability management
+  - title: Code & dependency scanning
+    items:
+      - SonarQube / SonarCloud
+      - Mend (WhiteSource) & SCA
+      - SAST & quality gates in CI
+      - Repo secret scanning
+      - Image & binary scanning
+      - SBOM & dependency policy checks
+
+# Resume-aligned technical emphasis (Capital One, Compare.com): AWS/Azure, IaC, CI/CD,
+# MSBuild & NPM automation, New Relic & Slack, VMs/containers, CDN & blob storage.
+workplace_skills:
+  - title: Productivity suites
+    items:
+      - Microsoft 365
+      - Google Workspace
+      - Spreadsheet analysis & reporting
+      - Presentation design & narrative
+  - title: Delivery & agility
+    items:
+      - Agile, Scrum, or Kanban
+      - Iteration planning
+      - Backlog refinement
+      - Release coordination
+  - title: Collaboration & leadership
+    items:
+      - Stakeholder alignment
+      - Technical writing & runbooks
+      - Mentorship & knowledge sharing
+      - Data-informed prioritization
+  - title: Work tracking & communication
+    items:
+      - Jira & Azure DevOps
+      - Confluence & internal docs
+      - Slack & Microsoft Teams
+      - Incidents & change requests
+  - title: AI productivity tooling
+    items:
+      - ChatGPT, Copilot, & Gemini for drafting & review
+      - Cursor, Windsurf, & Claude for agentic work
+      - Structured prompting & evaluation
+      - Guardrails & safety framing
+      - AI-assisted workflows
+  - title: Distributed team operations
+    items:
+      - Async-first communication
+      - Offshore & cross-timezone handoffs
+      - Meeting hygiene & agendas
+      - Decision logs & follow-ups
 
 site_technical_aspects:
   - title: Static generation
