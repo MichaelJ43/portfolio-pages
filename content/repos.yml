@@ -12,6 +12,20 @@ site:
       url: https://github.com/michaelj43
 
 skills:
+  - title: Languages
+    items:
+      - Python
+      - TypeScript
+      - Java
+      - Go
+      - Groovy
+      - Kotlin
+      - PowerShell
+      - Bash
+      - Rust
+      - HCL (Terraform)
+      - Crystal
+      - YAML
   - title: Cloud and infrastructure
     items:
       - AWS
