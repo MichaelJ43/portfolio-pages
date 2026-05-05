@@ -1,0 +1,51 @@
+name: Undeploy PR preview
+
+on:
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: "Pull request number to remove from gh-pages (folder preview/pr-<N>)"
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: undeploy-preview-${{ github.event.inputs.pr_number }}
+  cancel-in-progress: false
+
+jobs:
+  undeploy-preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Remove preview folder
+        run: |
+          set -euo pipefail
+          PR_RAW="${{ github.event.inputs.pr_number }}"
+          PR="$(printf '%s' "$PR_RAW" | tr -d '[:space:]')"
+
+          if ! [[ "$PR" =~ ^[0-9]+$ ]] || [ "$PR" -lt 1 ]; then
+            echo "::error::pr_number must be a positive integer (got '${PR_RAW}')"
+            exit 1
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          DIR="preview/pr-${PR}"
+          if [ ! -d "$DIR" ]; then
+            echo "No folder $DIR — nothing to do."
+            exit 0
+          fi
+          git rm -rf "$DIR"
+          if git diff --staged --quiet; then
+            echo "No staged changes."
+            exit 0
+          fi
+          git commit -m "chore: remove website preview for PR #${PR} (manual undeploy)"
+          git push
