@@ -56,24 +56,7 @@
   </footer>
   </div>
 
-  <script>
-    (function () {
-      var currentHost = window.location.hostname.toLowerCase();
-      document.querySelectorAll('a[href]').forEach(function (link) {
-        var href = link.getAttribute('href');
-        if (!href) return;
-        try {
-          var url = new URL(href, window.location.href);
-          if (!/^https?:$/.test(url.protocol)) return;
-          if (url.hostname.toLowerCase() === currentHost) return;
-          link.setAttribute('target', '_blank');
-          link.setAttribute('rel', 'noopener noreferrer');
-        } catch (_err) {
-          // Ignore malformed URLs.
-        }
-      });
-    })();
-  </script>
+  <script src="https://static.michaelj43.dev/v1/m43-external-links.js" defer></script>
 
   <script
     src="https://static.michaelj43.dev/v1/m43-analytics.js"
