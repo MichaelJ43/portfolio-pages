@@ -1,5 +1,6 @@
 site:
   title: Michael | Projects
+  base_domain: michaelj43.dev
   intro: >-
     I design and build infrastructure-as-code and cloud-optimized platforms,
     with developer CI/CD and day-to-day engineering experience as the target:
