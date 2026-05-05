@@ -18,7 +18,7 @@
     <% if !@links.empty? %>
       <nav class="links m43-nav" aria-label="Profiles">
         <% @links.each do |link| %>
-          <a href="<%= HTML.escape link.url %>"><%= HTML.escape link.label %></a>
+          <a href="<%= HTML.escape link.url %>"<%= external_link_attrs(link.url) %>><%= HTML.escape link.label %></a>
         <% end %>
       </nav>
     <% end %>
