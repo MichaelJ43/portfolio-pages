@@ -13,6 +13,32 @@
   letter-spacing: -0.02em;
 }
 
+.site-title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.45rem;
+  line-height: 1.1;
+}
+
+.site-title__name {
+  font-weight: 700;
+}
+
+.site-title__separator {
+  width: 1.35rem;
+  height: 0.15rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--m43-accent) 60%, var(--m43-text));
+  transform: translateY(-0.2rem);
+}
+
+.site-title__section {
+  color: var(--m43-muted);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
 .intro {
   margin: 0 0 1rem;
   color: var(--m43-muted);
