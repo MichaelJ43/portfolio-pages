@@ -103,26 +103,40 @@ workplace_skills:
       - Decision logs & follow-ups
 
 site_technical_aspects:
-  - title: Static generation
+  - title: Static generation, no runtime
     description: >-
-      A small Crystal generator reads YAML content, renders ECR templates, and
-      publishes static HTML that can run on GitHub Pages or a custom domain.
-  - title: Shared design assets
+      A small Crystal generator reads YAML content and renders ECR templates into
+      a fully static dist output. The deployed site has no runtime, no database,
+      and no per-request server code, which keeps the operational surface area low.
+  - title: Versioned design system on a CDN
     description: >-
-      The page consumes versioned tokens, shell styles, and primitives from
-      static.michaelj43.dev so multiple projects can share one visual system.
-  - title: Auth-aware shell
+      Tokens, shell, and primitives are pinned to versioned paths under
+      static.michaelj43.dev/v1 and published by the static-assets repo with
+      Terraform-defined S3 and CloudFront. One centralized visual system can
+      serve multiple subdomains without re-bundling.
+  - title: Decoupled auth shell
     description: >-
-      The top bar is provided by a shared script that talks to the auth platform
-      for sign-in state while keeping this portfolio static.
-  - title: Analytics client
+      The top navigation is injected at runtime by m43-auth-header.js, which
+      resolves session state against the auth platform via api.michaelj43.dev.
+      The portfolio stays static, so sign-in concerns never leak into the build.
+  - title: Telemetry to a shared API platform
     description: >-
-      A lightweight analytics script identifies this app and sends page events
-      to the shared API platform.
-  - title: Routing and delivery
+      Page events go to a versioned /analytics/events endpoint on
+      api.michaelj43.dev, backed by the shared-api-platform repo with API
+      Gateway, Lambda, and DynamoDB. The portfolio app identifies itself with
+      data-m43-app for cross-site observability.
+  - title: Terraform-defined, OIDC-delivered
     description: >-
-      Public demos, preview builds, and portfolio pages use custom domains,
-      static hosting, and GitHub Actions-based deployment.
+      The runtime dependencies for this page (the static-assets CDN and
+      shared-api-platform API) are Terraform-defined with S3 + DynamoDB-locked
+      remote state. Their deploys, plus the rest of the fleet, use GitHub OIDC
+      into scoped AWS roles so long-lived cloud credentials are not required.
+  - title: CI/CD with ephemeral PR previews
+    description: >-
+      GitHub Actions builds and publishes on each main push with single-flight
+      concurrency control. Each pull request gets its own preview under
+      /preview/pr-<n>/, posted back to the PR and cleaned up automatically
+      when the PR closes.
 
 navigation:
   - title: Echo
