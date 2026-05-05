@@ -203,9 +203,9 @@ repos:
     url: https://github.com/michaelj43/kubernetes-mono-app
     live_url: https://k8s.michaelj43.dev
     badge:
-      src: https://github.com/michaelj43/kubernetes-mono-app/actions/workflows/terraform-apply.yaml/badge.svg?branch=main
-      href: https://github.com/michaelj43/kubernetes-mono-app/actions/workflows/terraform-apply.yaml
-      alt: Deploy workflow status
+      src: https://github.com/michaelj43/kubernetes-mono-app/actions/workflows/deploy-aws.yaml/badge.svg?branch=main
+      href: https://github.com/michaelj43/kubernetes-mono-app/actions/workflows/deploy-aws.yaml
+      alt: Deploy AWS workflow status
     languages:
       - Go
       - TypeScript
