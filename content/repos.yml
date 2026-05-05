@@ -103,26 +103,39 @@ workplace_skills:
       - Decision logs & follow-ups
 
 site_technical_aspects:
-  - title: Static generation
+  - title: Static generation, no runtime
     description: >-
-      A small Crystal generator reads YAML content, renders ECR templates, and
-      publishes static HTML that can run on GitHub Pages or a custom domain.
-  - title: Shared design assets
+      A small Crystal generator in src/sitegen.cr reads YAML content and renders ECR templates into
+      a fully static dist directory. The deployed site has no runtime, no database, and no per-request
+      server code—every URL is a pre-built file, which keeps the operational surface area near zero.
+  - title: Versioned design system on a CDN
     description: >-
-      The page consumes versioned tokens, shell styles, and primitives from
-      static.michaelj43.dev so multiple projects can share one visual system.
-  - title: Auth-aware shell
+      Tokens, shell, and primitives are pinned under static.michaelj43.dev/v1/ (published from the static-assets repo):
+      Terraform-defined S3 plus CloudFront with Origin Access Control, immutable caching for versioned assets,
+      and a short-lived cache policy on index.html. One centralized visual system, many consumer subdomains,
+      no re-bundling.
+  - title: Decoupled auth shell
     description: >-
-      The top bar is provided by a shared script that talks to the auth platform
-      for sign-in state while keeping this portfolio static.
-  - title: Analytics client
+      The top navigation is injected at runtime by m43-auth-header.js, which resolves session state against
+      the auth platform via api.michaelj43.dev. The portfolio stays fully static—sign-in concerns never bleed
+      into the build—so the HTML remains straightforwardly cacheable.
+  - title: Telemetry to a shared API platform
     description: >-
-      A lightweight analytics script identifies this app and sends page events
-      to the shared API platform.
-  - title: Routing and delivery
+      Page events post to a versioned /analytics/events endpoint on api.michaelj43.dev, backed by shared-api-platform:
+      API Gateway, Lambda, and DynamoDB, deployed via GitHub Actions with AWS OIDC. CI gates the OpenAPI contract
+      (Spectral lint and drift checks), and CloudWatch alarms watch production. This site identifies itself as portfolio-pages via data-m43-app.
+  - title: Terraform-defined, OIDC-delivered
     description: >-
-      Public demos, preview builds, and portfolio pages use custom domains,
-      static hosting, and GitHub Actions-based deployment.
+      The runtime surfaces this page depends on—the static-assets CDN and shared-api-platform API—are Terraform-defined
+      with S3 plus DynamoDB-locked remote state. Their deploys, plus iac-builder, card-game, kubernetes-mono-app, and
+      local-ai-worker, authenticate to AWS via GitHub OIDC into scoped roles, so long-lived cloud credentials do not live
+      in repository secrets.
+  - title: CI/CD with ephemeral PR previews
+    description: >-
+      GitHub Actions builds and publishes on every push to main with single-flight concurrency. Each pull request gets
+      its own preview folder on gh-pages (for example preview/pr-42/), surfaced via a sticky bot comment and removed when
+      the PR closes—the same ephemeral-environment idea as iac-builder (PR-isolated Terraform on AWS) and card-game
+      (preview multiplayer stacks).
 
 navigation:
   - title: Echo

@@ -24,16 +24,16 @@
   </header>
 
   <main class="m43-main">
-    <section class="collapsible-section" aria-labelledby="site-tech-title">
+    <section class="collapsible-section site-built-section" aria-labelledby="site-tech-title">
       <details>
         <summary id="site-tech-title">How this website is built</summary>
-        <p class="details-intro">Technical aspects demonstrated by the portfolio site itself.</p>
-        <div class="info-grid">
+        <p class="details-intro">The build pipeline, shared platform, and delivery patterns this site runs on.</p>
+        <div class="site-built-index">
           <% @site_technical_aspects.each do |aspect| %>
-            <article>
-              <h3><%= HTML.escape aspect.title %></h3>
-              <p><%= HTML.escape aspect.description %></p>
-            </article>
+            <div class="site-built-item">
+              <h4 class="site-built-item__title"><%= HTML.escape aspect.title %></h4>
+              <p class="site-built-item__body"><%= HTML.escape aspect.description %></p>
+            </div>
           <% end %>
         </div>
       </details>
