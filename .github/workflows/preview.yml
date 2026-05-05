@@ -61,6 +61,7 @@ jobs:
       - name: Build static site
         env:
           CONTACT_EMAIL: ${{ secrets.CONTACT_EMAIL }}
+          LINKEDIN_PROFILE: ${{ secrets.LINKEDIN_PROFILE }}
         run: ./bin/sitegen
 
       - name: Publish preview to gh-pages
