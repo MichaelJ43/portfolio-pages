@@ -3,7 +3,6 @@ require "ecr"
 require "html"
 require "json"
 require "file_utils"
-require "uri"
 
 struct LinkItem
   include YAML::Serializable
@@ -18,7 +17,6 @@ struct SiteMeta
   include YAML::Serializable
   property title : String
   property intro : String
-  property base_domain : String
   property links : Array(LinkItem) = [] of LinkItem
 end
 
@@ -109,7 +107,6 @@ struct PageView
   getter workplace_skills : Array(SkillGroup)
   getter site_technical_aspects : Array(DescribedItem)
   getter repos : Array(RepoItem)
-  getter base_domain : String
 
   def initialize(root : SiteRoot)
     @page_title = root.site.title
@@ -119,11 +116,6 @@ struct PageView
     @workplace_skills = root.workplace_skills
     @site_technical_aspects = root.site_technical_aspects
     @repos = root.repos
-    @base_domain = root.site.base_domain
-  end
-
-  def external_link_attrs(url : String) : String
-    Sitegen.external_link_attrs(url, @base_domain)
   end
 
   ECR.def_to_s "#{__DIR__}/../templates/index.ecr"
@@ -134,18 +126,12 @@ struct NavigationView
   getter intro : String
   getter links : Array(LinkItem)
   getter navigation : Array(NavigationItem)
-  getter base_domain : String
 
   def initialize(root : SiteRoot)
     @page_title = "Navigation — Michael"
     @intro = "A quick index of public project pages, demos, and portfolio sections."
     @links = Sitegen.site_links_with_optional_contact(root.site.links)
     @navigation = root.navigation
-    @base_domain = root.site.base_domain
-  end
-
-  def external_link_attrs(url : String) : String
-    Sitegen.external_link_attrs(url, @base_domain)
   end
 
   ECR.def_to_s "#{__DIR__}/../templates/navigation.ecr"
@@ -156,18 +142,12 @@ struct CorporateProjectsView
   getter intro : String
   getter links : Array(LinkItem)
   getter corporate_projects : Array(CorporateProject)
-  getter base_domain : String
 
   def initialize(root : SiteRoot)
     @page_title = "Corporate Projects — Michael"
     @intro = "Public summaries of enterprise DevOps, cloud, automation, and developer tooling work."
     @links = Sitegen.site_links_with_optional_contact(root.site.links)
     @corporate_projects = root.corporate_projects
-    @base_domain = root.site.base_domain
-  end
-
-  def external_link_attrs(url : String) : String
-    Sitegen.external_link_attrs(url, @base_domain)
   end
 
   ECR.def_to_s "#{__DIR__}/../templates/corporate_projects.ecr"
@@ -175,23 +155,6 @@ end
 
 module Sitegen
   extend self
-
-  def external_link_attrs(url : String, base_domain : String) : String
-    external_site_link?(url, base_domain) ? %( target="_blank" rel="noopener noreferrer") : ""
-  end
-
-  # Treat only non-site-domain http(s) destinations as external-site links.
-  def external_site_link?(url : String, base_domain : String) : Bool
-    return false unless url.starts_with?("http://") || url.starts_with?("https://")
-    uri = URI.parse(url)
-    host = uri.host
-    return false if host.nil? || host.empty?
-    domain = base_domain.strip.downcase
-    host_downcase = host.downcase
-    !(host_downcase == domain || host_downcase.ends_with?(".#{domain}"))
-  rescue
-    false
-  end
 
   # Inserts profile/contact links after the GitHub profile link when set via env
   # (e.g. CI deploy). Keeps private values out of the repo.

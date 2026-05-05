@@ -18,7 +18,7 @@
     <% if !@links.empty? %>
       <nav class="links m43-nav" aria-label="Profiles">
         <% @links.each do |link| %>
-          <a href="<%= HTML.escape link.url %>"<%= external_link_attrs(link.url) %>><%= HTML.escape link.label %></a>
+          <a href="<%= HTML.escape link.url %>"><%= HTML.escape link.label %></a>
         <% end %>
       </nav>
     <% end %>
@@ -55,6 +55,25 @@
     <p><a href="../navigation/">Back to navigation</a> · <a href="../">Portfolio home</a></p>
   </footer>
   </div>
+
+  <script>
+    (function () {
+      var currentHost = window.location.hostname.toLowerCase();
+      document.querySelectorAll('a[href]').forEach(function (link) {
+        var href = link.getAttribute('href');
+        if (!href) return;
+        try {
+          var url = new URL(href, window.location.href);
+          if (!/^https?:$/.test(url.protocol)) return;
+          if (url.hostname.toLowerCase() === currentHost) return;
+          link.setAttribute('target', '_blank');
+          link.setAttribute('rel', 'noopener noreferrer');
+        } catch (_err) {
+          // Ignore malformed URLs.
+        }
+      });
+    })();
+  </script>
 
   <script
     src="https://static.michaelj43.dev/v1/m43-analytics.js"

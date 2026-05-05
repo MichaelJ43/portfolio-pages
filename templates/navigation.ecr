@@ -18,7 +18,7 @@
     <% if !@links.empty? %>
       <nav class="links m43-nav" aria-label="Profiles">
         <% @links.each do |link| %>
-          <a href="<%= HTML.escape link.url %>"<%= external_link_attrs(link.url) %>><%= HTML.escape link.label %></a>
+          <a href="<%= HTML.escape link.url %>"><%= HTML.escape link.label %></a>
         <% end %>
       </nav>
     <% end %>
@@ -29,7 +29,7 @@
     <div class="nav-card-grid">
       <% @navigation.each do |item| %>
         <article class="nav-card">
-          <h3><a href="<%= HTML.escape item.url %>"<%= external_link_attrs(item.url) %>><%= HTML.escape item.title %></a></h3>
+          <h3><a href="<%= HTML.escape item.url %>"><%= HTML.escape item.title %></a></h3>
           <% if note = item.note %>
             <p class="nav-card__note"><%= HTML.escape note %></p>
           <% end %>
@@ -43,6 +43,25 @@
     <p><a href="../">Back to portfolio home</a></p>
   </footer>
   </div>
+
+  <script>
+    (function () {
+      var currentHost = window.location.hostname.toLowerCase();
+      document.querySelectorAll('a[href]').forEach(function (link) {
+        var href = link.getAttribute('href');
+        if (!href) return;
+        try {
+          var url = new URL(href, window.location.href);
+          if (!/^https?:$/.test(url.protocol)) return;
+          if (url.hostname.toLowerCase() === currentHost) return;
+          link.setAttribute('target', '_blank');
+          link.setAttribute('rel', 'noopener noreferrer');
+        } catch (_err) {
+          // Ignore malformed URLs.
+        }
+      });
+    })();
+  </script>
 
   <script
     src="https://static.michaelj43.dev/v1/m43-analytics.js"

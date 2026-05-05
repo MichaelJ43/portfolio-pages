@@ -18,7 +18,7 @@
     <% if !@links.empty? %>
       <nav class="links m43-nav" aria-label="Profiles">
         <% @links.each do |link| %>
-          <a href="<%= HTML.escape link.url %>"<%= external_link_attrs(link.url) %>><%= HTML.escape link.label %></a>
+          <a href="<%= HTML.escape link.url %>"><%= HTML.escape link.label %></a>
         <% end %>
       </nav>
     <% end %>
@@ -80,10 +80,10 @@
       <% @repos.each do |repo| %>
         <li class="repo-card">
           <h3 class="repo-card__title-row">
-            <a class="repo-card__title-link" href="<%= HTML.escape repo.primary_url %>"<%= external_link_attrs(repo.primary_url) %>><%= HTML.escape repo.primary_title %></a>
+            <a class="repo-card__title-link" href="<%= HTML.escape repo.primary_url %>"><%= HTML.escape repo.primary_title %></a>
             <% if badge = repo.badge %>
               <% if href = badge.href %>
-                <a class="repo-card__badge-link" href="<%= HTML.escape href %>"<%= external_link_attrs(href) %>>
+                <a class="repo-card__badge-link" href="<%= HTML.escape href %>">
                   <img class="repo-card__badge" src="<%= HTML.escape badge.src %>" alt="<%= HTML.escape badge.alt %>" loading="lazy" decoding="async">
                 </a>
               <% else %>
@@ -93,7 +93,7 @@
           </h3>
           <% if repo.github_sub_link? %>
             <p class="repo-link-row" aria-label="Source repository">
-              <a href="<%= HTML.escape repo.url %>"<%= external_link_attrs(repo.url) %>>GitHub</a>
+              <a href="<%= HTML.escape repo.url %>">GitHub</a>
             </p>
           <% end %>
           <p class="repo-meta">
@@ -116,9 +116,28 @@
   </main>
 
   <footer class="site-footer m43-site-footer">
-    <p>Built with <a href="https://crystal-lang.org/"<%= external_link_attrs("https://crystal-lang.org/") %>>Crystal</a>. Source for this site lives alongside the generator in the same repository.</p>
+    <p>Built with <a href="https://crystal-lang.org/">Crystal</a>. Source for this site lives alongside the generator in the same repository.</p>
   </footer>
   </div>
+
+  <script>
+    (function () {
+      var currentHost = window.location.hostname.toLowerCase();
+      document.querySelectorAll('a[href]').forEach(function (link) {
+        var href = link.getAttribute('href');
+        if (!href) return;
+        try {
+          var url = new URL(href, window.location.href);
+          if (!/^https?:$/.test(url.protocol)) return;
+          if (url.hostname.toLowerCase() === currentHost) return;
+          link.setAttribute('target', '_blank');
+          link.setAttribute('rel', 'noopener noreferrer');
+        } catch (_err) {
+          // Ignore malformed URLs.
+        }
+      });
+    })();
+  </script>
 
   <script
     src="https://static.michaelj43.dev/v1/m43-analytics.js"
