@@ -208,6 +208,39 @@
   overflow-wrap: anywhere;
 }
 
+/* How this website is built: same vertical rhythm as Skills (header + body, no card grid) */
+.site-built-section .site-built-index {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 0.25rem;
+}
+
+.site-built-section .site-built-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  border-left: 2px solid var(--m43-border);
+  padding-left: 0.85rem;
+}
+
+.site-built-section .site-built-item__title {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-align: left;
+}
+
+.site-built-section .site-built-item__body {
+  margin: 0;
+  color: var(--m43-muted);
+  font-size: 0.94rem;
+  line-height: 1.55;
+  max-width: 48rem;
+  text-wrap: balance;
+  overflow-wrap: anywhere;
+}
+
 .inline-list li {
   padding: 0.18rem 0.5rem;
   border: 1px solid var(--m43-border);
