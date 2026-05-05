@@ -13,6 +13,13 @@
   letter-spacing: -0.02em;
 }
 
+.subheader {
+  margin: 0 0 0.6rem;
+  color: var(--m43-muted);
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
 .intro {
   margin: 0 0 1rem;
   color: var(--m43-muted);
@@ -22,7 +29,48 @@
 .links {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem 1.25rem;
+  gap: 0.6rem 0.75rem;
+}
+
+.profile-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.4rem 0.85rem;
+  border: 1px solid var(--m43-border);
+  border-radius: 999px;
+  background: var(--m43-surface);
+  color: var(--m43-text);
+  font-size: 0.92rem;
+  font-weight: 500;
+  line-height: 1;
+  text-decoration: none;
+  transition:
+    border-color 0.18s ease,
+    color 0.18s ease,
+    background-color 0.18s ease,
+    box-shadow 0.18s ease,
+    transform 0.18s ease;
+}
+
+.profile-link:hover {
+  border-color: var(--m43-accent);
+  color: var(--m43-accent);
+  background: var(--m43-elevated);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08), 0 4px 10px rgba(0, 0, 0, 0.06);
+  transform: translateY(-1px);
+}
+
+.profile-link:focus-visible {
+  outline: 2px solid var(--m43-accent);
+  outline-offset: 2px;
+}
+
+.profile-link__icon {
+  width: 1.05rem;
+  height: 1.05rem;
+  fill: currentColor;
+  flex: 0 0 auto;
 }
 
 .m43-main {
