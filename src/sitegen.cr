@@ -153,20 +153,28 @@ end
 module Sitegen
   extend self
 
-  # Inserts a mailto link after the GitHub profile link when CONTACT_EMAIL is set
-  # (e.g. CI deploy). Keeps the address out of the repo; Cloudflare can obfuscate on the wire.
+  # Inserts profile/contact links after the GitHub profile link when set via env
+  # (e.g. CI deploy). Keeps private values out of the repo.
   def site_links_with_optional_contact(site_links : Array(LinkItem)) : Array(LinkItem)
+    linkedin = ENV["LINKEDIN_PROFILE"]?.try(&.strip)
     email = ENV["CONTACT_EMAIL"]?.try(&.strip)
-    return site_links.dup if email.nil? || email.empty?
+    has_linkedin = !(linkedin.nil? || linkedin.empty?)
+    has_email = !(email.nil? || email.empty?)
+    return site_links.dup unless has_linkedin || has_email
 
     out = site_links.dup
-    contact = LinkItem.new(label: "Get in touch", url: "mailto:#{email}")
     idx = out.index { |l| l.url.includes?("github.com") }
-    if idx
-      out.insert(idx + 1, contact)
-    else
-      out << contact
+    insert_at = idx ? idx + 1 : out.size
+
+    if has_linkedin
+      out.insert(insert_at, LinkItem.new(label: "LinkedIn profile", url: linkedin.not_nil!))
+      insert_at += 1
     end
+
+    if has_email
+      out.insert(insert_at, LinkItem.new(label: "Get in touch", url: "mailto:#{email}"))
+    end
+
     out
   end
 
