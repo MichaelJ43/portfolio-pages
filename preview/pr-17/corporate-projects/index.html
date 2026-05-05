@@ -18,9 +18,9 @@
     
       <nav class="links m43-nav" aria-label="Profiles">
         
-          <a href="https://github.com/michaelj43" target="_blank" rel="noopener noreferrer">GitHub profile</a>
+          <a href="https://github.com/michaelj43">GitHub profile</a>
         
-          <a href="https://www.linkedin.com/in/michael-johnson-15ab6189/" target="_blank" rel="noopener noreferrer">LinkedIn profile</a>
+          <a href="https://www.linkedin.com/in/michael-johnson-15ab6189/">LinkedIn profile</a>
         
           <a href="mailto:michael.t.johnson43@gmail.com">Get in touch</a>
         
@@ -115,6 +115,25 @@
     <p><a href="../navigation/">Back to navigation</a> · <a href="../">Portfolio home</a></p>
   </footer>
   </div>
+
+  <script>
+    (function () {
+      var currentHost = window.location.hostname.toLowerCase();
+      document.querySelectorAll('a[href]').forEach(function (link) {
+        var href = link.getAttribute('href');
+        if (!href) return;
+        try {
+          var url = new URL(href, window.location.href);
+          if (!/^https?:$/.test(url.protocol)) return;
+          if (url.hostname.toLowerCase() === currentHost) return;
+          link.setAttribute('target', '_blank');
+          link.setAttribute('rel', 'noopener noreferrer');
+        } catch (_err) {
+          // Ignore malformed URLs.
+        }
+      });
+    })();
+  </script>
 
   <script
     src="https://static.michaelj43.dev/v1/m43-analytics.js"
