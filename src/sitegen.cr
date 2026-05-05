@@ -159,6 +159,10 @@ end
 module Sitegen
   extend self
 
+  GITHUB_ICON_PATH = "M12 2C6.477 2 2 6.488 2 12.02c0 4.426 2.865 8.18 6.839 9.505.5.094.682-.217.682-.482 0-.236-.008-.866-.013-1.7-2.782.605-3.37-1.344-3.37-1.344-.455-1.16-1.11-1.47-1.11-1.47-.909-.621.068-.608.068-.608 1.004.07 1.532 1.033 1.532 1.033.893 1.53 2.341 1.087 2.91.832.091-.649.35-1.088.636-1.338-2.22-.252-4.555-1.113-4.555-4.954 0-1.093.39-1.987 1.029-2.688-.103-.253-.446-1.272.098-2.651 0 0 .84-.269 2.75 1.026A9.556 9.556 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.295 2.748-1.026 2.748-1.026.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.85-2.339 4.7-4.566 4.947.359.31.678.92.678 1.855 0 1.338-.012 2.419-.012 2.748 0 .268.18.58.688.481A10.021 10.021 0 0 0 22 12.02C22 6.488 17.522 2 12 2Z"
+  LINKEDIN_ICON_PATH = "M20.447 20.452H16.89V14.87c0-1.332-.025-3.047-1.857-3.047-1.86 0-2.145 1.453-2.145 2.949v5.68H9.33V9h3.414v1.561h.049c.476-.9 1.637-1.85 3.37-1.85 3.602 0 4.266 2.37 4.266 5.455v6.286zM5.337 7.433a2.065 2.065 0 1 1 0-4.13 2.065 2.065 0 0 1 0 4.13zM7.116 20.452H3.558V9h3.558v11.452z"
+  MAIL_ICON_PATH = "M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm1.5 2.2v9.6h15V7.2l-7.5 5.25L4.5 7.2Zm.93-.2 6.57 4.6L18.57 7H5.43Z"
+
   # Inserts profile/contact links after the GitHub profile link when set via env
   # (e.g. CI deploy). Keeps private values out of the repo.
   def site_links_with_optional_contact(site_links : Array(LinkItem)) : Array(LinkItem)
@@ -182,6 +186,31 @@ module Sitegen
     end
 
     out
+  end
+
+  def profile_links_nav(links : Array(LinkItem)) : String
+    String.build do |io|
+      io << %(<nav class="links m43-nav" aria-label="Profiles">)
+      links.each do |link|
+        escaped_url = HTML.escape(link.url)
+        escaped_label = HTML.escape(link.label)
+        io << %(<a class="profile-link" href="#{escaped_url}">)
+        if icon = icon_path_for(link.url)
+          io << %(<svg class="profile-link__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">)
+          io << %(<path d="#{icon}"></path></svg>)
+        end
+        io << %(<span>#{escaped_label}</span></a>)
+      end
+      io << %(</nav>)
+    end
+  end
+
+  private def icon_path_for(url : String) : String?
+    normalized = url.downcase
+    return GITHUB_ICON_PATH if normalized.includes?("github.com")
+    return LINKEDIN_ICON_PATH if normalized.includes?("linkedin.com")
+    return MAIL_ICON_PATH if normalized.starts_with?("mailto:")
+    nil
   end
 
   def load_root(path : String) : SiteRoot
