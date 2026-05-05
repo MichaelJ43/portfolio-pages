@@ -28,6 +28,10 @@
               <svg class="profile-link__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                 <path d="M20.447 20.452H16.89V14.87c0-1.332-.025-3.047-1.857-3.047-1.86 0-2.145 1.453-2.145 2.949v5.68H9.33V9h3.414v1.561h.049c.476-.9 1.637-1.85 3.37-1.85 3.602 0 4.266 2.37 4.266 5.455v6.286zM5.337 7.433a2.065 2.065 0 1 1 0-4.13 2.065 2.065 0 0 1 0 4.13zM7.116 20.452H3.558V9h3.558v11.452z"></path>
               </svg>
+            <% elsif url.starts_with?("mailto:") %>
+              <svg class="profile-link__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm1.5 2.2v9.6h15V7.2l-7.5 5.25L4.5 7.2Zm.93-.2 6.57 4.6L18.57 7H5.43Z"></path>
+              </svg>
             <% end %>
             <span><%= HTML.escape link.label %></span>
           </a>

@@ -10,8 +10,6 @@ site:
   links:
     - label: GitHub profile
       url: https://github.com/michaelj43
-    - label: LinkedIn profile
-      url: https://www.linkedin.com/in/michaeljohnson43/
 
 skills:
   - title: Cloud and infrastructure
