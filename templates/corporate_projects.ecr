@@ -16,11 +16,7 @@
     <h1><%= HTML.escape @page_title %></h1>
     <p class="intro m43-intro"><%= HTML.escape @intro %></p>
     <% if !@links.empty? %>
-      <nav class="links m43-nav" aria-label="Profiles">
-        <% @links.each do |link| %>
-          <a href="<%= HTML.escape link.url %>"><%= HTML.escape link.label %></a>
-        <% end %>
-      </nav>
+      <%= Sitegen.profile_links_nav(@links) %>
     <% end %>
   </header>
 

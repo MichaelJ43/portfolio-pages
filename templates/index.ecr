@@ -14,13 +14,12 @@
   <div class="m43-page__body m43">
   <header class="site-header m43-site-header">
     <h1><%= HTML.escape @page_title %></h1>
+    <% if subtitle = @subtitle %>
+      <p class="subheader"><%= HTML.escape subtitle %></p>
+    <% end %>
     <p class="intro m43-intro"><%= HTML.escape @intro %></p>
     <% if !@links.empty? %>
-      <nav class="links m43-nav" aria-label="Profiles">
-        <% @links.each do |link| %>
-          <a href="<%= HTML.escape link.url %>"><%= HTML.escape link.label %></a>
-        <% end %>
-      </nav>
+      <%= Sitegen.profile_links_nav(@links) %>
     <% end %>
   </header>
 
