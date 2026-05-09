@@ -353,6 +353,7 @@ repos:
     title: local-ai-worker
     repo: michaelj43/local-ai-worker
     url: https://github.com/michaelj43/local-ai-worker
+    live_url: https://aiworkers.michaelj43.dev
     badge:
       src: https://img.shields.io/github/v/release/michaelj43/local-ai-worker?label=release
       href: https://github.com/michaelj43/local-ai-worker/releases
