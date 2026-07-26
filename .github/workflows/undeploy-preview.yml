@@ -12,7 +12,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: undeploy-preview-${{ github.event.inputs.pr_number }}
+  group: gh-pages
   cancel-in-progress: false
 
 jobs:

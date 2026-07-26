@@ -7,18 +7,26 @@ on:
 permissions:
   contents: read
 
-concurrency:
-  group: preview-${{ github.event.pull_request.number }}
-  cancel-in-progress: true
-
 jobs:
   build-preview:
     if: github.event.action != 'closed'
     runs-on: ubuntu-latest
+    concurrency:
+      group: preview-build-${{ github.event.pull_request.number }}
+      cancel-in-progress: true
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
           persist-credentials: false
+
+      # Same-origin previews must not execute PR-controlled generator/templates.
+      - name: Use trusted generator from PR base
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          set -euo pipefail
+          git fetch --depth=1 origin "$BASE_SHA"
+          git checkout "$BASE_SHA" -- src templates shard.yml
 
       - uses: crystal-lang/install-crystal@d8ef131ecec0352ce0e39b81b0a6d95def58fe2f # v1
         with:
@@ -49,6 +57,9 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
+    concurrency:
+      group: gh-pages
+      cancel-in-progress: false
     steps:
       - name: Download static site
         uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
@@ -75,6 +86,10 @@ jobs:
               echo "::error::SITE_BASE_PATH contains unsupported characters"
               exit 1
             fi
+            if [[ "$ROOT" =~ /\.\.?(/|$) ]]; then
+              echo "::error::SITE_BASE_PATH must not contain '.' or '..' path segments"
+              exit 1
+            fi
           elif [ "$REPO" = "${OWNER}.github.io" ]; then
             ROOT="/"
           else
@@ -99,11 +114,16 @@ jobs:
         id: preview
         env:
           CUSTOM: ${{ vars.CUSTOM_PAGES_URL }}
+          OWNER: ${{ github.repository_owner }}
+          P: ${{ steps.base.outputs.path }}
         run: |
-          OWNER="${{ github.repository_owner }}"
-          P="${{ steps.base.outputs.path }}"
+          set -euo pipefail
           if [ -n "${CUSTOM:-}" ]; then
             ORIGIN="${CUSTOM%/}"
+            if ! [[ "$ORIGIN" =~ ^https://[A-Za-z0-9.-]+$ ]]; then
+              echo "::error::CUSTOM_PAGES_URL must be an https origin with no path or query"
+              exit 1
+            fi
             printf 'url=%s%s\n' "$ORIGIN" "$P" >> "$GITHUB_OUTPUT"
           else
             printf 'url=https://%s.github.io%s\n' "$OWNER" "$P" >> "$GITHUB_OUTPUT"
@@ -133,6 +153,9 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+    concurrency:
+      group: gh-pages
+      cancel-in-progress: false
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
@@ -140,11 +163,12 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Remove preview folder
+        env:
+          PR: ${{ github.event.pull_request.number }}
         run: |
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          PR=${{ github.event.pull_request.number }}
           DIR="preview/pr-${PR}"
           if [ ! -d "$DIR" ]; then
             echo "No folder $DIR — nothing to do."
