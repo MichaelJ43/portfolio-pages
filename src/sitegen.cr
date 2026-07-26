@@ -3,6 +3,7 @@ require "ecr"
 require "html"
 require "json"
 require "file_utils"
+require "uri"
 
 struct LinkItem
   include YAML::Serializable
@@ -168,8 +169,16 @@ module Sitegen
   def site_links_with_optional_contact(site_links : Array(LinkItem)) : Array(LinkItem)
     linkedin = ENV["LINKEDIN_PROFILE"]?.try(&.strip)
     email = ENV["CONTACT_EMAIL"]?.try(&.strip)
-    has_linkedin = !(linkedin.nil? || linkedin.empty?)
-    has_email = !(email.nil? || email.empty?)
+    has_linkedin = !(linkedin.nil? || linkedin.empty?) && valid_linkedin_profile?(linkedin.not_nil!)
+    has_email = !(email.nil? || email.empty?) && valid_contact_email?(email.not_nil!)
+
+    if linkedin && !linkedin.empty? && !has_linkedin
+      STDERR.puts "Ignoring LINKEDIN_PROFILE: expected an https:// LinkedIn profile URL"
+    end
+    if email && !email.empty? && !has_email
+      STDERR.puts "Ignoring CONTACT_EMAIL: expected a plain email address"
+    end
+
     return site_links.dup unless has_linkedin || has_email
 
     out = site_links.dup
@@ -188,18 +197,49 @@ module Sitegen
     out
   end
 
+  # Allow https/http/mailto and same-site relative paths; reject javascript:/data:/etc.
+  def safe_url(url : String, *, allow_mailto : Bool = true) : String?
+    trimmed = url.strip
+    return nil if trimmed.empty?
+    return nil if trimmed.includes?('\n') || trimmed.includes?('\r') || trimmed.includes?('\0')
+
+    lower = trimmed.downcase
+    if lower.starts_with?("https://") || lower.starts_with?("http://")
+      return trimmed
+    end
+    if allow_mailto && lower.starts_with?("mailto:")
+      address = trimmed[7..]
+      return valid_contact_email?(address) ? trimmed : nil
+    end
+    # Relative same-site paths only (no scheme, no protocol-relative //...).
+    return nil if trimmed.starts_with?("//") || trimmed.includes?(":")
+    return nil unless trimmed.starts_with?("/") || trimmed.starts_with?("./") || trimmed.starts_with?("../") || trimmed.matches?(/^[A-Za-z0-9._~-]/)
+    trimmed
+  end
+
+  def escaped_href(url : String, *, allow_mailto : Bool = true) : String?
+    safe_url(url, allow_mailto: allow_mailto).try { |u| HTML.escape(u) }
+  end
+
+  def escaped_src(url : String) : String?
+    safe_url(url, allow_mailto: false).try { |u| HTML.escape(u) }
+  end
+
   def profile_links_nav(links : Array(LinkItem)) : String
     String.build do |io|
       io << %(<nav class="links m43-nav" aria-label="Profiles">)
       links.each do |link|
-        escaped_url = HTML.escape(link.url)
         escaped_label = HTML.escape(link.label)
-        io << %(<a class="profile-link" href="#{escaped_url}">)
-        if icon = icon_path_for(link.url)
-          io << %(<svg class="profile-link__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">)
-          io << %(<path d="#{icon}"></path></svg>)
+        if escaped_url = escaped_href(link.url)
+          io << %(<a class="profile-link" href="#{escaped_url}">)
+          if icon = icon_path_for(link.url)
+            io << %(<svg class="profile-link__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">)
+            io << %(<path d="#{icon}"></path></svg>)
+          end
+          io << %(<span>#{escaped_label}</span></a>)
+        else
+          io << %(<span class="profile-link"><span>#{escaped_label}</span></span>)
         end
-        io << %(<span>#{escaped_label}</span></a>)
       end
       io << %(</nav>)
     end
@@ -213,6 +253,23 @@ module Sitegen
     nil
   end
 
+  private def valid_linkedin_profile?(url : String) : Bool
+    uri = URI.parse(url)
+    return false unless uri.scheme == "https"
+    host = uri.host.try(&.downcase)
+    return false unless host
+    host == "linkedin.com" || host.ends_with?(".linkedin.com")
+  rescue
+    false
+  end
+
+  private def valid_contact_email?(email : String) : Bool
+    return false if email.empty?
+    return false if email.includes?("?") || email.includes?("&") || email.includes?("/") || email.includes?("\\")
+    return false if email.includes?('\n') || email.includes?('\r') || email.includes?('\0') || email.includes?(' ')
+    email.matches?(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)
+  end
+
   def load_root(path : String) : SiteRoot
     SiteRoot.from_yaml File.read(path)
   end
@@ -220,6 +277,8 @@ module Sitegen
   def copy_public(public_dir : String, dist_dir : String)
     return unless Dir.exists?(public_dir)
     Dir.each_child(public_dir) do |name|
+      # Generated HTML/JSON must win over anything dropped in public/.
+      next if name.ends_with?(".html") || name.ends_with?(".htm") || name.ends_with?(".js") || name == "navigation.json"
       src = File.join(public_dir, name)
       dst = File.join(dist_dir, name)
       FileUtils.cp_r(src, dst)
@@ -238,6 +297,7 @@ module Sitegen
         json.field "items" do
           json.array do
             root.navigation.each do |item|
+              next unless safe_url(item.url, allow_mailto: false)
               json.object do
                 json.field "title", item.title
                 json.field "url", item.url
@@ -256,11 +316,12 @@ module Sitegen
   def run(content_file : String, dist_dir : String, public_dir : String)
     root = load_root(content_file)
     FileUtils.mkdir_p(dist_dir)
+    # Copy static assets first; generated pages overwrite any colliding names.
+    copy_public(public_dir, dist_dir)
     write_page(dist_dir, "index.html", PageView.new(root).to_s)
     write_page(dist_dir, File.join("navigation", "index.html"), NavigationView.new(root).to_s)
     write_page(dist_dir, "navigation.json", navigation_json(root))
     write_page(dist_dir, File.join("corporate-projects", "index.html"), CorporateProjectsView.new(root).to_s)
-    copy_public(public_dir, dist_dir)
   end
 end
 

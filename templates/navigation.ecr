@@ -25,7 +25,13 @@
     <div class="nav-card-grid">
       <% @navigation.each do |item| %>
         <article class="nav-card">
-          <h3><a href="<%= HTML.escape item.url %>"><%= HTML.escape item.title %></a></h3>
+          <h3>
+            <% if href = Sitegen.escaped_href(item.url, allow_mailto: false) %>
+              <a href="<%= href %>"><%= HTML.escape item.title %></a>
+            <% else %>
+              <%= HTML.escape item.title %>
+            <% end %>
+          </h3>
           <% if note = item.note %>
             <p class="nav-card__note"><%= HTML.escape note %></p>
           <% end %>
