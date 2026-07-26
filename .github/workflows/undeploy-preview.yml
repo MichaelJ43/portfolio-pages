@@ -19,15 +19,16 @@ jobs:
   undeploy-preview:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
           ref: gh-pages
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Remove preview folder
+        env:
+          PR_RAW: ${{ github.event.inputs.pr_number }}
         run: |
           set -euo pipefail
-          PR_RAW="${{ github.event.inputs.pr_number }}"
           PR="$(printf '%s' "$PR_RAW" | tr -d '[:space:]')"
 
           if ! [[ "$PR" =~ ^[0-9]+$ ]] || [ "$PR" -lt 1 ]; then
