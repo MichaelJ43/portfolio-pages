@@ -60,6 +60,8 @@ jobs:
     concurrency:
       group: gh-pages
       cancel-in-progress: false
+    outputs:
+      url: ${{ steps.preview.outputs.url }}
     steps:
       - name: Download static site
         uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
@@ -147,6 +149,45 @@ jobs:
 
             Built from `${{ github.sha }}`.
           edit-mode: replace
+
+  live-test-preview:
+    needs: deploy-preview
+    if: >-
+      github.event.action != 'closed' &&
+      github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    steps:
+      - name: Live-test preview site
+        env:
+          PREVIEW_URL: ${{ needs.deploy-preview.outputs.url }}
+        run: |
+          set -euo pipefail
+          if [ -z "${PREVIEW_URL:-}" ]; then
+            echo "::error::Missing preview URL from deploy-preview"
+            exit 1
+          fi
+
+          echo "Checking ${PREVIEW_URL}"
+          for attempt in $(seq 1 24); do
+            code="$(curl -sS -L --max-time 30 -o /tmp/preview.html -w '%{http_code}' "$PREVIEW_URL" || true)"
+            if [ "$code" = "200" ] \
+              && grep -qi '<html' /tmp/preview.html \
+              && grep -qi '</html>' /tmp/preview.html \
+              && grep -Eqi 'Selected work|Pages|Corporate Projects|portfolio' /tmp/preview.html
+            then
+              echo "Preview live-test passed on attempt ${attempt}"
+              exit 0
+            fi
+            echo "Attempt ${attempt}: HTTP ${code}; waiting for Pages to publish..."
+            sleep 10
+          done
+
+          echo "::error::Preview site did not become healthy at ${PREVIEW_URL}"
+          if [ -f /tmp/preview.html ]; then
+            echo "Last response body (truncated):"
+            head -c 2000 /tmp/preview.html || true
+          fi
+          exit 1
 
   cleanup-preview:
     if: github.event.action == 'closed'
